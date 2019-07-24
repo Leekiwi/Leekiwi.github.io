@@ -3975,7 +3975,8 @@ li.feature-2 {
     position:relative;
     max-width:800px;
     padding:0 10px;
-    top:49.3%;
+    /* top:49.3%; */
+    top:80.3%;
     left:50%;
     transform:translate(-50%,-50%);
     -webkit-transform:translate(-50%,-50%);
