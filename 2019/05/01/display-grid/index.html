@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Grid 网格布局 | Little ice</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "キウイKiwi";
+  mashiro_option.author_name = "Kiwi";
+  mashiro_option.site_url = "https://leekiwi.github.io";
+  mashiro_option.v_appId = "UzL1enXRO1jguOtO15OeE8j3-9Nh9j0Va";
+  mashiro_option.v_appKey = "aSJSxXuaCtGN5dnKRKEsfm4k";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(0).jpg.webp,https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(9).jpg.webp,https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/cover/(10).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://leekiwi.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/Leekiwi" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="微博">
+                    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=121473597" target="_blank" class="social-github" title="网易云音乐">
+                    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="知乎">
+                    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="/" target="_blank" class="social-github" title="微信">
+                    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/social/wechat.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">キウイ</span>
+            <span class="shironeko">Kiwi</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/转载/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://w.wallhaven.cc/full/g8/wallhaven-g82533.jpg);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/g8/wallhaven-g82533.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Grid 网格布局</h1>
+      <p class="entry-census">
+        <span>
+          <a href="hojun.cn">
+            <img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="hojun.cn">kiwi</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-5-1<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文引自阮一峰的网络日志：<a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">CSS Grid 网格布局教程</a></p>
+</blockquote>
+<p>网格布局（Grid）是最强大的 CSS 布局方案。</p>
+<p>它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。以前，只能通过复杂的 CSS 框架达到的效果，现在浏览器内置了。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983751-91e177b1-1adf-4c01-9c71-909f48b71cba.png#align=left&amp;display=inline&amp;height=357&amp;originHeight=357&amp;originWidth=792&amp;size=0&amp;status=done&amp;width=792" alt></p>
+<a id="more"></a>
+<p>上图这样的布局，就是 Grid 布局的拿手好戏。</p>
+<p>Grid 布局与 Flex 布局有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。</p>
+<p><strong>Flex 布局是轴线布局</strong>，只能指定”项目”针对轴线的位置，可以看作是<strong>一维布局</strong>。Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是<strong>二维布局</strong>。Grid 布局远比 Flex 布局强大。</p>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><p>学习 Grid 布局之前，需要了解一些基本概念。这些概念与日常用的 execl 表格是一样的，非常容易理解</p>
+<h3 id="1-1-容器和项目"><a href="#1-1-容器和项目" class="headerlink" title="1.1 容器和项目"></a>1.1 容器和项目</h3><p>采用网格布局的区域，称为”<strong>容器</strong>“（container）。容器内部采用网格定位的子元素，称为”<strong>项目</strong>“（item）。</p>
+<pre><code class="html">&lt;div&gt;
+  &lt;div&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>上面代码中，最外层的 <code>&lt;div&gt;</code> 元素就是容器，内层的三个 <code>&lt;div&gt;</code> 元素就是项目。</p>
+<p>:::warning<br><strong>项目只能是容器的顶层子元素</strong>Grid 布局只对项目生效。**<br>:::</p>
+<h3 id="1-2-行和列"><a href="#1-2-行和列" class="headerlink" title="1.2 行和列"></a>1.2 行和列</h3><p>容器里面的水平区域称为”行”（row），垂直区域称为”列”（column）。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983715-ad8994c3-ef7e-48db-80b0-db15079e52ba.png#align=left&amp;display=inline&amp;height=372&amp;originHeight=372&amp;originWidth=564&amp;size=0&amp;status=done&amp;width=564" alt></p>
+<p>就是表格中的行和列。</p>
+<h3 id="1-3-单元格"><a href="#1-3-单元格" class="headerlink" title="1.3 单元格"></a>1.3 单元格</h3><p>行和列的交叉区域，称为”单元格”（cell）。</p>
+<p>正常情况下，n 行和 m 列会产生 n x m 个单元格。比如，3 行 3 列会产生 9 个单元格。</p>
+<h3 id="1-4-网格线"><a href="#1-4-网格线" class="headerlink" title="1.4 网格线"></a>1.4 网格线</h3><p>划分网格的线，称为”网格线”（grid line）。水平网格线划分出行，垂直网格线划分出列。</p>
+<p>正常情况下，n 行有 n + 1 根水平网格线，m 列有 m + 1 根垂直网格线，比如三行就有四根水平网格线。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983768-2a5aa75f-00ef-4169-a635-231d7dcde0fb.png#align=left&amp;display=inline&amp;height=462&amp;originHeight=462&amp;originWidth=500&amp;size=0&amp;status=done&amp;width=500" alt></p>
+<p>上图是一个 4 x 4 的网格，共有 5 根水平网格线和 5 根垂直网格线。</p>
+<h2 id="2-容器属性"><a href="#2-容器属性" class="headerlink" title="2. 容器属性"></a>2. 容器属性</h2><p>Grid 布局的属性分成两类。一类定义在容器上面，称为容器属性；另一类定义在项目上面，称为项目属性。</p>
+<h3 id="2-1-display"><a href="#2-1-display" class="headerlink" title="2.1 display"></a>2.1 display</h3><p><code>display: grid</code> 指定一个容器采用网格布局。</p>
+<pre><code class="css">div {
+  display: grid;
+}
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983782-0254811b-b06f-4f09-a2c3-92332232c509.png#align=left&amp;display=inline&amp;height=311&amp;originHeight=311&amp;originWidth=209&amp;size=0&amp;status=done&amp;width=209" alt></p>
+<p>上图是 <code>display: grid</code> 的<a href="https://jsbin.com/guvivum/edit?html,css,output" target="_blank" rel="noopener">效果</a>。</p>
+<p>默认情况下，容器元素都是块级元素，但也可以设成行内元素。</p>
+<pre><code class="css">div {
+  display: inline-grid;
+}
+</code></pre>
+<p>上面代码指定 <code>div</code> 是一个行内元素，该元素内部采用网格布局。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983759-0abb77f4-4a00-4660-b606-7f63ce44e174.png#align=left&amp;display=inline&amp;height=212&amp;originHeight=212&amp;originWidth=341&amp;size=0&amp;status=done&amp;width=341" alt></p>
+<p>上图是 <code>display: inline-grid</code> 的<a href="https://jsbin.com/qatitav/edit?html,css,output" target="_blank" rel="noopener">效果</a>。</p>
+<p>:::warning<br><strong>注意：</strong>设为网格布局以后，容器子元素（项目）的 <code>float</code>、<code>display: inline-block</code>、<code>display: table-cell</code>、<code>vertical-align</code> 和 <code>column-*</code> 等设置都将失效。<br>:::</p>
+<h3 id="2-2-grid-template-columns-rows-定义行列宽"><a href="#2-2-grid-template-columns-rows-定义行列宽" class="headerlink" title="2.2 grid-template-columns/rows 定义行列宽"></a>2.2 grid-template-columns/rows 定义行列宽</h3><p>容器指定了网格布局以后，接着就要划分行和列。<code>grid-template-columns</code> 属性定义每一列的列宽，<code>grid-template-rows</code> 属性定义每一行的行高。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px; /* 3 列，每列 100px*/
+  grid-template-rows: 100px 100px 100px; /* 3 行，每行 100px*/
+}
+</code></pre>
+<p><a href="https://jsbin.com/qiginur/edit?css,output" target="_blank" rel="noopener">上面代码</a>指定了一个 3 行 3 列的网格，列宽和行高都是 <code>100px</code>。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983751-cc41ee16-3497-4515-a65d-5e9a43ce3eef.png#align=left&amp;display=inline&amp;height=402&amp;originHeight=402&amp;originWidth=390&amp;size=0&amp;status=done&amp;width=390" alt></p>
+<p>除了使用绝对单位，也可以使用百分比。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 33.33% 33.33% 33.33%;
+}
+</code></pre>
+<p>另外还有一些辅助的方法。</p>
+<h4 id="repeat-重复"><a href="#repeat-重复" class="headerlink" title="repeat() 重复"></a>repeat() 重复</h4><p>有时候，重复写同样的值非常麻烦，尤其网格很多时。这时，可以使用 <code>repeat</code> 函数，简化重复的值。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(3, 33.33%);
+}
+</code></pre>
+<p><code>repeat</code> 接受两个参数，第一个参数是<strong>重复的次数</strong>，第二个参数是<strong>所要重复的值</strong>。</p>
+<p><code>repeat</code> 重复某种模式也是可以的。</p>
+<pre><code class="css">grid-template-columns: repeat(2, 100px 20px 80px);
+</code></pre>
+<p><a href="https://jsbin.com/cokohu/edit?css,output" target="_blank" rel="noopener">上面代码</a>定义了6列，第一列和第四列的宽度为<code>100px</code>，第二列和第五列为<code>20px</code>，第三列和第六列为<code>80px</code>。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983787-6d591289-fdd9-4928-a202-9d18f7ddbd53.png#align=left&amp;display=inline&amp;height=276&amp;originHeight=276&amp;originWidth=521&amp;size=0&amp;status=done&amp;width=521" alt></p>
+<h4 id="auto-fill-自动充满容器"><a href="#auto-fill-自动充满容器" class="headerlink" title="auto-fill 自动充满容器"></a>auto-fill 自动充满容器</h4><p>有时，单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用 <code>auto-fill</code> 关键字表示自动填充。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+}
+</code></pre>
+<p><a href="https://jsbin.com/himoku/edit?css,output" target="_blank" rel="noopener">上面代码</a>表示每列宽度<code>100px</code>，然后自动填充，直到容器不能放置更多的列。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983791-a7f49cc5-bc60-44a1-95de-62a536e17d48.png#align=left&amp;display=inline&amp;height=268&amp;originHeight=268&amp;originWidth=647&amp;size=0&amp;status=done&amp;width=647" alt></p>
+<h4 id="fr-用于比例关系"><a href="#fr-用于比例关系" class="headerlink" title="fr 用于比例关系"></a>fr 用于比例关系</h4><p>为了方便<strong>表示比例关系</strong>，网格布局提供了 <code>fr</code> 关键字（fraction 的缩写，意为”片段”）。如果两列的宽度分别为 <code>1fr</code>和 <code>2fr</code>，就表示后者是前者的两倍。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+</code></pre>
+<p><a href="https://jsbin.com/hadexek/edit?html,css,output" target="_blank" rel="noopener">上面代码</a>表示两个相同宽度的列。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983794-dba768f7-02ed-49a7-9a0f-ec73af1469b4.png#align=left&amp;display=inline&amp;height=585&amp;originHeight=585&amp;originWidth=471&amp;size=0&amp;status=done&amp;width=471" alt></p>
+<p><code>fr</code> 可以与绝对长度的单位结合使用，这时会非常方便。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: 150px 1fr 2fr;
+}
+</code></pre>
+<p><a href="https://jsbin.com/remowec/edit?html,css,output" target="_blank" rel="noopener">上面代码</a>表示，第一列的宽度为150像素，第二列的宽度是第三列的一半。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983765-9d9f62d5-b77b-4f6b-97ef-88406f484327.png#align=left&amp;display=inline&amp;height=366&amp;originHeight=366&amp;originWidth=478&amp;size=0&amp;status=done&amp;width=478" alt></p>
+<h4 id="minmax-长度范围"><a href="#minmax-长度范围" class="headerlink" title="minmax() 长度范围"></a>minmax() 长度范围</h4><p><code>minmax()</code> 函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
+<pre><code class="css">grid-template-columns: 1fr 1fr minmax(100px, 1fr);
+</code></pre>
+<p>上面代码中，<code>minmax(100px, 1fr)</code> 表示列宽不小于 <code>100px</code>，不大于 <code>1fr</code>。</p>
+<h4 id="auto-自适应"><a href="#auto-自适应" class="headerlink" title="auto 自适应"></a>auto 自适应</h4><p><code>auto</code> 关键字表示由浏览器自己决定长度。</p>
+<pre><code class="css">grid-template-columns: 100px auto 100px;
+</code></pre>
+<p>上面代码中，第二列的宽度，基本上等于该列单元格的最大宽度，除非单元格内容设置了 <code>min-width</code>，且这个值大于最大宽度。</p>
+<h4 id="网格线的名称"><a href="#网格线的名称" class="headerlink" title="网格线的名称"></a>网格线的名称</h4><p><code>grid-template-columns</code> 属性和 <code>grid-template-rows</code> 属性里面，还可以使用<strong>方括号</strong>，<strong>指定每一根网格线的名字</strong>，方便以后的引用。</p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
+  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+}
+</code></pre>
+<p>上面代码指定网格布局为 3 x 3，因此有 4 根垂直网格线和 4 根水平网格线。方括号里面依次是这八根线的名字。</p>
+<p>网格布局<strong>允许同一根线有多个名字</strong>，比如 <code>[fifth-line row-5]</code>。</p>
+<h4 id="布局实例"><a href="#布局实例" class="headerlink" title="布局实例"></a>布局实例</h4><p><code>grid-template-columns</code> 属性对于网页布局非常有用。</p>
+<p>两栏式布局只需要一行代码。</p>
+<pre><code class="css">.wrapper {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+</code></pre>
+<p>传统的十二网格布局，写起来也很容易。</p>
+<pre><code class="css">grid-template-columns: repeat(12, 1fr);
+</code></pre>
+<h3 id="2-3-grid-gap-定义间隔"><a href="#2-3-grid-gap-定义间隔" class="headerlink" title="2.3 grid-gap 定义间隔"></a>2.3 grid-gap 定义间隔</h3><p><code>grid-row-gap</code> 属性设置行与行的间隔（行间距），<code>grid-column-gap</code> 属性设置列与列的间隔（列间距）。</p>
+<pre><code class="css">.container {
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}
+</code></pre>
+<p><a href="https://jsbin.com/mezufab/edit?css,output" target="_blank" rel="noopener">上面代码</a>中，<code>grid-row-gap</code>用于设置行间距，<code>grid-column-gap</code>用于设置列间距。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983808-817066fd-23ed-4735-8570-ed06c634f00f.png#align=left&amp;display=inline&amp;height=443&amp;originHeight=443&amp;originWidth=448&amp;size=0&amp;status=done&amp;width=448" alt></p>
+<p><code>grid-gap</code> 属性是 <code>grid-column-gap</code> 和 <code>grid-row-gap</code> 的合并<strong>简写形式</strong>，语法如下。</p>
+<pre><code class="css">grid-gap: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;
+</code></pre>
+<p>因此，上面一段 CSS 代码等同于下面的代码。</p>
+<pre><code class="css">.container {
+  grid-gap: 20px 20px;
+}
+</code></pre>
+<p>如果 <code>grid-gap</code> <strong>省略了第二个值，浏览器认为第二个值等于第一个值</strong>。</p>
+<p>:::info<br>根据最新标准，上面三个属性名的 <strong><code>grid-</code> 前缀已经删除</strong>，<code>grid-column-gap</code> 和 <code>grid-row-gap</code> 写成 <code>column-gap</code>和 <code>row-gap</code>，<code>grid-gap</code> 写成 <code>gap</code>。<br>:::</p>
+<h3 id="2-4-grid-template-areas-定义区域"><a href="#2-4-grid-template-areas-定义区域" class="headerlink" title="2.4 grid-template-areas 定义区域"></a>2.4 grid-template-areas 定义区域</h3><p>网格布局允许指定”<strong>区域</strong>“（area），<strong>一个区域由单个或多个单元格组成</strong>。<code>grid-template-areas</code> 属性用于定义区域。这个属性<strong>会给每一个单元格定义名称，只要名称相同，那么它们就是同一区域。</strong></p>
+<pre><code class="css">.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas: &#39;a b c&#39;
+                       &#39;d e f&#39;
+                       &#39;g h i&#39;;
+}
+</code></pre>
+<p>上面代码先划分出 9 个单元格，然后将其定名为 a 到 i 的九个区域，分别对应这九个单元格。</p>
+<p>多个单元格合并成一个区域的写法如下。</p>
+<pre><code class="css">grid-template-areas: &#39;a a a&#39;
+                     &#39;b b b&#39;
+                     &#39;c c c&#39;;
+</code></pre>
+<p>上面代码将9个单元格分成 a、b、c 三个区域。</p>
+<p>下面是一个布局实例。</p>
+<pre><code class="css">grid-template-areas: &quot;header header header&quot;
+                     &quot;main main sidebar&quot;
+                     &quot;footer footer footer&quot;;
+</code></pre>
+<p>上面代码中，顶部是页眉区域 header，底部是页脚区域 footer，中间部分则为 main 和 sidebar。</p>
+<p><strong>如果某些区域不需要利用，则使用”点”（<code>.</code>）表示。</strong></p>
+<pre><code class="css">grid-template-areas: &#39;a . c&#39;
+                     &#39;d . f&#39;
+                     &#39;g . i&#39;;
+</code></pre>
+<p>上面代码中，中间一列为点，<strong>表示没有用到该单元格，或者该单元格不属于任何区域</strong>。</p>
+<p>:::warning<br>注意，<strong>区域的命名会影响到网格线</strong>。每个区域的起始网格线，会自动命名为 <code>区域名-start</code>，终止网格线自动命名为 <code>区域名-end</code>。</p>
+<p>比如，区域名为 <code>header</code>，则起始位置的水平网格线和垂直网格线叫做 <code>header-start</code>，终止位置的水平网格线和垂直网格线叫做 <code>header-end</code>。<br>:::</p>
+<h3 id="2-5-grid-auto-flow-项目排列顺序"><a href="#2-5-grid-auto-flow-项目排列顺序" class="headerlink" title="2.5 grid-auto-flow 项目排列顺序"></a>2.5 grid-auto-flow 项目排列顺序</h3><p>划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。<strong>默认的放置顺序是”先行后列”</strong>，即先填满第一行，再开始放入第二行，即下图数字的顺序。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983824-d6aeee47-47d1-4175-912d-cdeb6a710e68.png#align=left&amp;display=inline&amp;height=402&amp;originHeight=402&amp;originWidth=390&amp;size=0&amp;status=done&amp;width=390" alt></p>
+<p>这个顺序由 <code>grid-auto-flow</code> 属性决定，<strong>默认值是 <code>row</code>，即”先行后列”。也可以将它设成 <code>column</code>，变成”先列后行”。</strong></p>
+<pre><code class="css">grid-auto-flow: column;
+</code></pre>
+<p><a href="https://jsbin.com/xutokec/edit?css,output" target="_blank" rel="noopener">上面代码</a>设置了<code>column</code>以后，放置顺序就变成了下图。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983769-3e4519f9-7dc7-4c0d-8828-a3e8b51832ac.png#align=left&amp;display=inline&amp;height=395&amp;originHeight=395&amp;originWidth=398&amp;size=0&amp;status=done&amp;width=398" alt></p>
+<p><code>grid-auto-flow</code> 属性除了设置成 <code>row</code> 和 <code>column</code>，还可以设成 <code>row dense</code> 和 <code>column dense</code>。这两个值主要用于，某些项目指定位置以后，剩下的项目怎么自动放置。</p>
+<p><a href="https://jsbin.com/wapejok/edit?css,output" target="_blank" rel="noopener">下面的例子</a>让1号项目和2号项目各占据两个单元格，然后在默认的 <code>grid-auto-flow: row</code> 情况下，会产生下面这样的布局。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983747-3f368158-d650-4b72-8603-47f4f2411ca2.png#align=left&amp;display=inline&amp;height=508&amp;originHeight=508&amp;originWidth=389&amp;size=0&amp;status=done&amp;width=389" alt></p>
+<p>上图中，1号项目后面的位置是空的，这是因为3号项目默认跟着2号项目，所以会排在2号项目后面。</p>
+<p>现在修改设置，设为 <code>row dense</code>，<strong>表示”先行后列”，并且尽可能紧密填满，尽量不出现空格。</strong></p>
+<pre><code class="css">grid-auto-flow: row dense;
+</code></pre>
+<p><a href="https://jsbin.com/helewuy/edit?css,output" target="_blank" rel="noopener">上面代码</a>的效果如下。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983771-14f113a8-5acf-4930-b0b3-05070b2cbddb.png#align=left&amp;display=inline&amp;height=511&amp;originHeight=511&amp;originWidth=401&amp;size=0&amp;status=done&amp;width=401" alt></p>
+<p>如果将设置改为 <code>column dense</code>，<strong>表示”先列后行”，并且尽量填满空格。</strong></p>
+<pre><code class="css">grid-auto-flow: column dense;
+</code></pre>
+<p><a href="https://jsbin.com/pupoduc/1/edit?html,css,output" target="_blank" rel="noopener">上面代码</a>的效果如下。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983886-55626a27-031b-42f7-836a-795e46ce49d8.png#align=left&amp;display=inline&amp;height=393&amp;originHeight=393&amp;originWidth=476&amp;size=0&amp;status=done&amp;width=476" alt></p>
+<h3 id="2-6-justify-items，align-items，place-items"><a href="#2-6-justify-items，align-items，place-items" class="headerlink" title="2.6 justify-items，align-items，place-items"></a>2.6 justify-items，align-items，place-items</h3><p><code>justify-items</code> 属性<strong>设置单元格内容的水平位置</strong>，<code>align-items</code>属性<strong>设置单元格内容的垂直位置</strong>。</p>
+<pre><code class="css">.container {
+  justify-items: start | end | center | stretch;
+  align-items: start | end | center | stretch;
+}
+</code></pre>
+<p>这<strong>两个属性的写法完全相同</strong>，都可以取下面这些值。</p>
+<ul>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+<li>stretch：拉伸，占满单元格的整个宽度（<strong>默认值</strong>）。</li>
+</ul>
+<pre><code class="css">.container {
+  justify-items: start;
+}
+</code></pre>
+<p><a href="https://jsbin.com/gijeqej/edit?css,output" target="_blank" rel="noopener">上面代码</a>表示，单元格的内容左对齐，效果如下图。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983858-67229c62-146b-4776-9441-8b8a23d73d0d.png#align=left&amp;display=inline&amp;height=229&amp;originHeight=229&amp;originWidth=579&amp;size=0&amp;status=done&amp;width=579" alt></p>
+<pre><code class="css">.container {
+  align-items: start;
+}
+</code></pre>
+<p><a href="https://jsbin.com/tecawur/edit?css,output" target="_blank" rel="noopener">上面代码</a>表示，单元格的内容头部对齐，效果如下图。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983904-2ed2921e-51ea-40f4-aa61-79d376a980cd.png#align=left&amp;display=inline&amp;height=226&amp;originHeight=226&amp;originWidth=569&amp;size=0&amp;status=done&amp;width=569" alt></p>
+<p><code>place-items</code> 属性是 <code>align-items</code> 属性和 <code>justify-items</code> 属性的<strong>合并简写形式</strong>。</p>
+<pre><code class="css">place-items: &lt;align-items&gt; &lt;justify-items&gt;;
+</code></pre>
+<p>下面是一个例子。</p>
+<pre><code class="css">place-items: start end;
+</code></pre>
+<p><strong>如果省略第二个值，则浏览器认为与第一个值相等。</strong></p>
+<h3 id="2-7-justify-content，align-content，place-content"><a href="#2-7-justify-content，align-content，place-content" class="headerlink" title="2.7 justify-content，align-content，place-content"></a>2.7 justify-content，align-content，place-content</h3><p><code>justify-content</code> 属性是<strong>整个内容区域在容器里面的水平位置</strong>，<code>align-content</code> 属性是<strong>整个内容区域的垂直位置</strong>。</p>
+<pre><code class="css">.container {
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+}
+</code></pre>
+<p>这两个属性的写法完全相同，都可以取下面这些值。</p>
+<p>下面的图都以<code>justify-content</code>属性为例，<code>align-content</code>属性的图完全一样，只是将水平方向改成垂直方向。</p>
+<ul>
+<li>start - 对齐容器的起始边框。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983764-04e5b8ad-a3f3-45c5-8431-26693eaedb67.png#align=left&amp;display=inline&amp;height=349&amp;originHeight=349&amp;originWidth=582&amp;size=0&amp;status=done&amp;width=582" alt></p>
+<ul>
+<li>end - 对齐容器的结束边框。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983770-56c54d31-2e25-4152-b79d-a2d0621204c2.png#align=left&amp;display=inline&amp;height=334&amp;originHeight=334&amp;originWidth=591&amp;size=0&amp;status=done&amp;width=591" alt></p>
+<ul>
+<li>center - 容器内部居中。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983842-ea7cac80-1972-4028-b792-1a44be57cec2.png#align=left&amp;display=inline&amp;height=331&amp;originHeight=331&amp;originWidth=578&amp;size=0&amp;status=done&amp;width=578" alt></p>
+<ul>
+<li>stretch - 项目大小没有指定时，拉伸占据整个网格容器。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983749-c7110d3a-7df7-4dca-ab80-f885101b56ab.png#align=left&amp;display=inline&amp;height=343&amp;originHeight=343&amp;originWidth=592&amp;size=0&amp;status=done&amp;width=592" alt></p>
+<ul>
+<li>space-around - 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983804-a9dbefab-b65f-460d-bf53-be976c478a5b.png#align=left&amp;display=inline&amp;height=338&amp;originHeight=338&amp;originWidth=575&amp;size=0&amp;status=done&amp;width=575" alt></p>
+<ul>
+<li>space-between - 项目与项目的间隔相等，项目与容器边框之间没有间隔。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983781-66ba9417-126c-4d33-a475-d77fbec9df5c.png#align=left&amp;display=inline&amp;height=340&amp;originHeight=340&amp;originWidth=575&amp;size=0&amp;status=done&amp;width=575" alt></p>
+<ul>
+<li>space-evenly - 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983853-7c212e1b-9489-420a-8064-7e9865bdb00c.png#align=left&amp;display=inline&amp;height=337&amp;originHeight=337&amp;originWidth=588&amp;size=0&amp;status=done&amp;width=588" alt></p>
+<p><code>place-content</code> 属性是 <code>align-content</code> 属性和 <code>justify-content</code> 属性的合并简写形式。</p>
+<pre><code class="css">place-content: &lt;align-content&gt; &lt;justify-content&gt;
+</code></pre>
+<p>下面是一个例子。</p>
+<pre><code class="css">place-content: space-around space-evenly;
+</code></pre>
+<p><strong>如果省略第二个值，浏览器就会假定第二个值等于第一个值。</strong></p>
+<h3 id="2-8-grid-auto-columns-rows"><a href="#2-8-grid-auto-columns-rows" class="headerlink" title="2.8 grid-auto-columns/rows"></a>2.8 grid-auto-columns/rows</h3><p>有时候，一些项目的指定位置，在现有网格的外部。比如网格只有3列，但是某一个项目指定在第5行。这时，浏览器会自动生成多余的网格，以便放置项目。</p>
+<p><code>grid-auto-columns</code>属性和<code>grid-auto-rows</code>属性用来设置，浏览器自动创建的多余网格的列宽和行高。它们的写法与<code>grid-template-columns</code>和<code>grid-template-rows</code>完全相同。如果不指定这两个属性，浏览器完全根据单元格内容的大小，决定新增网格的列宽和行高。</p>
+<p><a href="https://jsbin.com/sayuric/edit?css,output" target="_blank" rel="noopener">下面的例子</a>里面，划分好的网格是3行 x 3列，但是，8号项目指定在第4行，9号项目指定在第5行。</p>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-rows: 50px; 
+}
+</code></pre><p>上面代码指定新增的行高统一为50px（原始的行高为100px）。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983902-d67f23e7-caf1-45e2-bc82-8e2a56f358de.png#align=left&amp;display=inline&amp;height=517&amp;originHeight=517&amp;originWidth=389&amp;size=0&amp;status=done&amp;width=389" alt></p>
+<h3 id="2-9-grid-template-grid-属性简写"><a href="#2-9-grid-template-grid-属性简写" class="headerlink" title="2.9 grid-template, grid 属性简写"></a>2.9 grid-template, grid 属性简写</h3><p><code>grid-template</code> 属性是 <code>grid-template-columns</code>、<code>grid-template-rows</code> 和 <code>grid-template-areas</code> 这三个属性的合并简写形式。</p>
+<p><code>grid</code> 属性是 <code>grid-template-rows</code>、<code>grid-template-columns</code>、<code>grid-template-areas</code>、 <code>grid-auto-rows</code>、<code>grid-auto-columns</code>、<code>grid-auto-flow</code> 这六个属性的合并简写形式。</p>
+<p><strong>从易读易写的角度考虑，还是建议不要合并属性</strong>。</p>
+<h2 id="3-项目属性"><a href="#3-项目属性" class="headerlink" title="3. 项目属性"></a>3. 项目属性</h2><p>下面这些属性定义在项目上面。</p>
+<h3 id="3-1-grid-column-row-start-end"><a href="#3-1-grid-column-row-start-end" class="headerlink" title="3.1 grid-column/row-start/end"></a>3.1 grid-column/row-start/end</h3><p>项目的位置是可以指定的，具体方法就是指定项目的四个边框，分别定位在哪根网格线。</p>
+<ul>
+<li>grid-column-start：左边框所在的垂直网格线</li>
+<li>grid-column-end：右边框所在的垂直网格线</li>
+<li>grid-row-start：上边框所在的水平网格线</li>
+<li>grid-row-end：下边框所在的水平网格线</li>
+</ul>
+<h4 id="指定网格线数字"><a href="#指定网格线数字" class="headerlink" title="指定网格线数字"></a>指定网格线数字</h4><pre><code class="css">.item-1 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+</code></pre>
+<p>上面代码指定，1号项目的左边框是第二根垂直网格线，右边框是第四根垂直网格线。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983860-491b2983-e94b-42c4-8356-a1a49fbdd792.png#align=left&amp;display=inline&amp;height=508&amp;originHeight=508&amp;originWidth=386&amp;size=0&amp;status=done&amp;width=386" alt></p>
+<p>上图中，只指定了1号项目的左右边框，没有指定上下边框，所以会<strong>采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。</strong></p>
+<p>除了 1 号项目以外，其他项目都没有指定位置，由浏览器自动布局，这时它们的位置由容器的 grid-auto-flow 属性决定，这个属性的默认值是 row，因此会”先行后列”进行排列。读者可以把这个属性的值分别改成 column、row dense 和 column dense，看看其他项目的位置发生了怎样的变化。</p>
+<p><a href="https://jsbin.com/nagobey/edit?html,css,output" target="_blank" rel="noopener">下面的例子</a>是指定四个边框位置的效果。</p>
+<pre><code>.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+</code></pre><p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676984033-2dbfe88a-3748-476d-954d-4eca2db155fa.png#align=left&amp;display=inline&amp;height=506&amp;originHeight=506&amp;originWidth=388&amp;size=0&amp;status=done&amp;width=388" alt></p>
+<h4 id="指定网格线名称"><a href="#指定网格线名称" class="headerlink" title="指定网格线名称"></a>指定网格线名称</h4><p>这四个属性的值，除了指定为第几个网格线，<strong>还可以指定为网格线的名字</strong>。</p>
+<pre><code class="css">.item-1 {
+  grid-column-start: header-start;
+  grid-column-end: header-end;
+}
+</code></pre>
+<p>上面代码中，左边框和右边框的位置，都指定为网格线的名字。</p>
+<h4 id="span-跨越网格"><a href="#span-跨越网格" class="headerlink" title="span 跨越网格"></a>span 跨越网格</h4><p>这四个属性的值还可以使用 span 关键字，表示”<strong>跨越</strong>“，即<strong>左右边框（上下边框）之间跨越多少个网格。</strong></p>
+<pre><code class="css">.item-1 {
+  grid-column-start: span 2;
+}
+</code></pre>
+<p><a href="https://jsbin.com/hehumay/edit?html,css,output" target="_blank" rel="noopener">上面代码</a>表示，1 号项目的左边框距离右边框跨越2个网格。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983848-1c06f382-e367-4bbc-84aa-4be8b8d3af26.png#align=left&amp;display=inline&amp;height=504&amp;originHeight=504&amp;originWidth=396&amp;size=0&amp;status=done&amp;width=396" alt></p>
+<p>这与<a href="https://jsbin.com/mujihib/edit?html,css,output" target="_blank" rel="noopener">下面的代码</a>效果完全一样。</p>
+<pre><code class="css">.item-1 {
+  grid-column-end: span 2;
+}
+</code></pre>
+<p>使用这四个属性，<strong>如果产生了项目的重叠，则使用 z-index 属性指定项目的重叠顺序。</strong></p>
+<h3 id="3-2-grid-column-row-属性简写"><a href="#3-2-grid-column-row-属性简写" class="headerlink" title="3.2 grid-column/row 属性简写"></a>3.2 grid-column/row 属性简写</h3><p>grid-column 属性是 grid-column-start 和 grid-column-end 的合并简写形式<br>grid-row 属性是 grid-row-start 属性和 grid-row-end 的合并简写形式。</p>
+<pre><code class="css">.item {
+  grid-column:  / ;
+  grid-row:  / ;
+}
+</code></pre>
+<p>下面是一个例子。</p>
+<pre><code class="css">.item-1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+/* 等同于 */
+.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+</code></pre>
+<p>上面代码中，项目 item-1 占据第一行，从第一根列线到第三根列线。</p>
+<p>这两个属性之中，也可以使用 span 关键字，表示跨越多少个网格。</p>
+<pre><code class="css">.item-1 {
+  background: #b03532;
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+/* 等同于 */
+.item-1 {
+  background: #b03532;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+</code></pre>
+<p><a href="https://jsbin.com/volugow/edit?html,css,output" target="_blank" rel="noopener">上面代码</a>中，项目item-1占据的区域，包括第一行 + 第二行、第一列 + 第二列。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983749-8982b0e1-62ee-4709-ad09-da03a6062327.png#align=left&amp;display=inline&amp;height=509&amp;originHeight=509&amp;originWidth=391&amp;size=0&amp;status=done&amp;width=391" alt></p>
+<p>斜杠以及后面的部分可以省略，默认跨越一个网格。</p>
+<pre><code class="css">.item-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+</code></pre>
+<p>上面代码中，项目 item-1 占据左上角第一个网格。</p>
+<h3 id="3-3-grid-area-指定放置区域"><a href="#3-3-grid-area-指定放置区域" class="headerlink" title="3.3 grid-area 指定放置区域"></a>3.3 grid-area 指定放置区域</h3><p>grid-area 属性指定项目放在哪一个区域。</p>
+<pre><code class="css">.item-1 {
+  grid-area: e;
+}
+</code></pre>
+<p><a href="https://jsbin.com/qokexob/edit?css,output" target="_blank" rel="noopener">上面代码</a>中，1号项目位于 e 区域，效果如下图。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983866-71f2a7f4-6746-4c4b-b177-102808f1938d.png#align=left&amp;display=inline&amp;height=392&amp;originHeight=392&amp;originWidth=387&amp;size=0&amp;status=done&amp;width=387" alt></p>
+<p>grid-area 属性还可用作 grid-row-start、grid-column-start、grid-row-end、grid-column-end 的合并简写形式，直接指定项目的位置。</p>
+<pre><code class="css">.item {
+  grid-area: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;
+}
+</code></pre>
+<p>下面是一个<a href="https://jsbin.com/duyafez/edit?css,output" target="_blank" rel="noopener">例子</a>。</p>
+<pre><code class="css">.item-1 {
+  grid-area: 1 / 1 / 3 / 3;
+}
+</code></pre>
+<h3 id="3-4-justify-self，align-self，place-self"><a href="#3-4-justify-self，align-self，place-self" class="headerlink" title="3.4 justify-self，align-self，place-self"></a>3.4 justify-self，align-self，place-self</h3><p>justify-self 属性设置单元格内容的水平位置（左中右），跟 justify-items 属性的用法完全一致，但只作用于单个项目。</p>
+<p>align-self 属性设置单元格内容的垂直位置（上中下），跟 align-items 属性的用法完全一致，也是只作用于单个项目。</p>
+<pre><code class="css">.item {
+  justify-self: start | end | center | stretch;
+  align-self: start | end | center | stretch;
+}
+</code></pre>
+<p>这两个属性都可以取下面四个值。</p>
+<ul>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+<li>stretch：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<p>下面是 justify-self: start 的例子。</p>
+<pre><code class="css">.item-1  {
+  justify-self: start;
+}
+</code></pre>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556676983779-82fad9e9-74f8-4ff6-8be8-f626d39cc1f5.png#align=left&amp;display=inline&amp;height=224&amp;originHeight=224&amp;originWidth=569&amp;size=0&amp;status=done&amp;width=569" alt></p>
+<p>place-self 属性是 align-self 属性和 justify-self 属性的合并简写形式。</p>
+<pre><code class="css">place-self: &lt;align-self&gt; &lt;justify-self&gt;;
+</code></pre>
+<p>下面是一个例子。</p>
+<pre><code class="css">place-self: center center;
+</code></pre>
+<p>如果省略第二个值，place-self 属性会认为这两个值相等。</p>
+<h2 id="4-兼容性"><a href="#4-兼容性" class="headerlink" title="4. 兼容性"></a>4. 兼容性</h2><blockquote>
+<p><a href="https://caniuse.com/#search=grid" target="_blank" rel="noopener">Can I use</a></p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/190267/1556681336173-9b565dd3-1301-4eb7-b874-0f40b35559d1.png#align=left&amp;display=inline&amp;height=374&amp;name=image.png&amp;originHeight=311&amp;originWidth=601&amp;size=21872&amp;status=done&amp;width=723" alt="image.png"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2018/12/12/Hexo-Theme-Sakura/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Hexo-Theme-Sakura</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "UzL1enXRO1jguOtO15OeE8j3-9Nh9j0Va",
+        appKey: "aSJSxXuaCtGN5dnKRKEsfm4k",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="hojun.cn" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="kiwi" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="hojun.cn" itemprop="url" rel="author">kiwi</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 爱吃kiwi<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/leekiwi/music-mv@1.2","name":"chengquan.mp4,fqsws.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/leekiwi/music-mv@1.2","name":"chengquan.mp4,fqsws.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">キウイKiwi</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/Leekiwi" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=578603626&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/转载/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<div class="aplayer"
+
+    data-id="121473597"
+
+    data-server="netease"
+
+    data-type="playlist"
+
+    data-fixed="true"
+
+    data-autoplay="false"
+
+    data-loop="all"
+
+    data-order="random"
+
+    data-preload="auto"
+
+    data-volume="0.7"
+
+    data-mutex="true"
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
