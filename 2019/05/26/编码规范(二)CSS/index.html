@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2018 | Little ice</title>
+  <title itemprop="name">编码规范（二）CSS | Little ice</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -383,107 +383,297 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://w.wallhaven.cc/full/vg/wallhaven-vg5v9l.jpg);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/vg/wallhaven-vg5v9l.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      编码规范（二）CSS</h1>
+      <p class="entry-census">
+        <span>
+          <a href="leekiwi.github.io">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href="leekiwi.github.io">kiwi</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-5-26<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2019年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      05月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2019/05/26/编码规范(二)CSS/">
-                          <span style="color:#0bf;">
-                          26日09:34:18</span>
-                          编码规范（二）CSS
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2019/05/01/display-grid/">
-                          <span style="color:#0bf;">
-                          01日11:17:11</span>
-                          Grid 网格布局
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2018年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2018/12/12/Hexo-Theme-Sakura/">
-                          <span style="color:#0bf;">
-                          12日22:16:01</span>
-                          Hexo-Theme-Sakura
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>统一的编码规范，有助于编写高质量、可读性强、易于维护的代码。</p>
+<p>CSS 代码的编写，应该尽量简洁、高性能、高可维护性，达到三者的一个最佳平衡。不能为了简洁牺牲可维护性。</p>
+<blockquote>
+<p>本文引自：<a href="https://codeguide.bootcss.com/#html-syntax" target="_blank" rel="noopener">编码规范 by @mdo</a></p>
+<p><strong>黄金定律</strong><br>不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="一、语法"><a href="#一、语法" class="headerlink" title="一、语法"></a>一、语法</h2><ul>
+<li>用两个空格来代替 tab</li>
+<li>单独的选择器单独放在一行</li>
+<li>左花括号前添加一个空格</li>
+<li>声明块的右花括号应当单独成行</li>
+<li><code>:</code> 后插入一个空格</li>
+<li>每条声明都应该独占一行</li>
+<li>所有声明语句都应当以分号结尾</li>
+<li>以逗号分隔的属性值，逗号后面插入一个空格</li>
+<li>不要在 <code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>、<code>hsla()</code> 或 <code>rect()</code> 值的内部的逗号后面插入空格。这样利于从多个属性值（既加逗号也加空格）中区分多个颜色值（只加逗号，不加空格）。</li>
+<li><code>.5</code> 代替 <code>0.5</code>；<code>-.5px</code> 代替 <code>-0.5px</code></li>
+<li>十六进制值应该全部小写</li>
+<li>尽量使用简写形式的十六进制值</li>
+<li>为选择器中的属性添加双引号</li>
+<li>避免为 0 值指定单位</li>
+</ul>
+<pre><code class="css">/* Bad CSS */
+.selector, .selector-secondary, .selector[type=text] {
+  padding:15px;
+  margin:0px 0px 15px;
+  background-color:rgba(0, 0, 0, 0.5);
+  box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF
+}
+
+/* Good CSS */
+.selector,
+.selector-secondary,
+.selector[type=&quot;text&quot;] {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
+}
+</code></pre>
+<h2 id="二、属性声明"><a href="#二、属性声明" class="headerlink" title="二、属性声明"></a>二、属性声明</h2><h3 id="2-1-顺序"><a href="#2-1-顺序" class="headerlink" title="2.1 顺序"></a>2.1 顺序</h3><p>相关的属性声明应当归为一组，并按照下面的顺序排列：</p>
+<ul>
+<li>定位</li>
+<li>盒模型</li>
+<li>版式</li>
+<li>视觉</li>
+</ul>
+<p>由于定位可以从正常的文档流中移除元素，并且还能覆盖盒模型相关的样式，因此排在首位。盒模型排在第二位，因为它决定了组件的尺寸和位置。</p>
+<p>其他属性只是影响组件的内部或者是不影响前两组属性，因此排在后面。</p>
+<pre><code class="css">.declaration-order {
+  /* 定位 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  /* 盒模型 */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+
+  /* 版式 */
+  font: normal 13px &quot;Helvetica Neue&quot;, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+
+  /* 视觉 */
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #000;
+
+  /* 杂项 */
+  opacity: 1;
+}
+</code></pre>
+<h3 id="2-2-简写形式的属性声明"><a href="#2-2-简写形式的属性声明" class="headerlink" title="2.2 简写形式的属性声明"></a>2.2 简写形式的属性声明</h3><p>在需要显示地设置所有值的情况下，应当<strong>尽量限制</strong>使用简写形式的属性声明。</p>
+<ul>
+<li>padding</li>
+<li>margin</li>
+<li>font</li>
+<li>background</li>
+<li>border</li>
+<li>border-radius</li>
+</ul>
+<p>大部分情况下，我们不需要为简写形式的属性声明指定所有值。例如 <code>header</code> 元素只需要设置上、下边距的值，因此，在必要的时候，只需覆盖这两个值就可以。</p>
+<p>过度使用简写形式的属性声明</p>
+<ul>
+<li>导致代码混乱</li>
+<li>对属性值带来不必要的覆盖从而引起意外的副作用</li>
+<li>重新的渲染造成浏览器资源的消耗</li>
+</ul>
+<pre><code class="css">/* Bad example */
+.element {
+  margin: 0 0 10px;
+  background: red;
+  background: url(&quot;image.jpg&quot;);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Good example */
+.element {
+  margin-bottom: 10px;
+  background-color: red;
+  background-image: url(&quot;image.jpg&quot;);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+</code></pre>
+<h3 id="2-3-带前缀的属性"><a href="#2-3-带前缀的属性" class="headerlink" title="2.3 带前缀的属性"></a>2.3 带前缀的属性</h3><p>当使用特定厂商的带有前缀的属性时，通过缩进的方式，让每个属性的值在垂直方向对齐，这样便于多行编辑。</p>
+<pre><code class="css">/* Prefixed properties */
+.selector {
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+</code></pre>
+<h3 id="2-4-单行规则声明"><a href="#2-4-单行规则声明" class="headerlink" title="2.4 单行规则声明"></a>2.4 单行规则声明</h3><p>对于只包含一条声明的样式，为了易读性和便于快速编辑，建议将语句放在同一行。对于带有多条声明的样式，还是应当将声明分为多行。</p>
+<pre><code class="css">/* Single declarations on one line */
+.span1 { width: 60px; }
+
+/* Multiple declarations, one per line */
+.sprite {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  background-image: url(../img/sprite.png);
+}
+</code></pre>
+<h3 id="2-5-媒体查询（Media-query）的位置"><a href="#2-5-媒体查询（Media-query）的位置" class="headerlink" title="2.5 媒体查询（Media query）的位置"></a>2.5 媒体查询（Media query）的位置</h3><p>将媒体查询尽可能<strong>放在相关规则的附近</strong>。不要将他们打包放在一个单一样式文件中或者放在文档底部。如果你把他们分开了，将来只会被大家遗忘。</p>
+<h2 id="三、class-命名"><a href="#三、class-命名" class="headerlink" title="三、class 命名"></a>三、class 命名</h2><ul>
+<li>class 名称中只能出现小写字符和破折号，破折号应当用于相关 class 的命名</li>
+<li>避免过度任意的简写</li>
+<li>class 名称应当尽可能短，并且意义明确</li>
+<li>使用有意义的名称。使用有组织的或目的明确的名称，不要使用表现形式的名称</li>
+<li>基于最近的父 class 或基本 class 作为新 class 的前缀</li>
+<li>使用 <code>.js-*</code> class 来标识行为（与样式相对），并且不要将这些 class 包含到 CSS 文件中</li>
+</ul>
+<h2 id="四、选择器"><a href="#四、选择器" class="headerlink" title="四、选择器"></a>四、选择器</h2><ul>
+<li>对于通用元素使用 class ，这样利于渲染性能的优化。</li>
+<li>对于经常出现的组件，避免使用属性选择器</li>
+<li>选择器要尽可能短，并且尽量限制组成选择器的元素个数，建议不要超过 3 </li>
+<li>只有在必要的时候才将 class 限制在最近的父元素内（也就是后代选择器）</li>
+</ul>
+<h2 id="五、代码组织"><a href="#五、代码组织" class="headerlink" title="五、代码组织"></a>五、代码组织</h2><ul>
+<li>以组件为单位组织代码段</li>
+<li>制定一致的注释规范</li>
+<li>使用一致的空白符将代码分隔成块，这样利于扫描较大的文档</li>
+<li>如果使用了多个 CSS 文件，将其按照组件而非页面的形式分拆，因为页面会被重组，而组件只会被移动</li>
+</ul>
+<h3 id="5-1-不要使用原生-import"><a href="#5-1-不要使用原生-import" class="headerlink" title="5.1 不要使用原生 @import"></a>5.1 不要使用原生 @import</h3><p>与 <code>&lt;link&gt;</code> 标签相比，<code>@import</code> 指令要慢很多，不光增加了额外的请求次数，还会导致不可预料的问题。</p>
+<ul>
+<li>使用 Sass 或 Less 等 CSS 预处理器的 <code>@import</code> 指令，将多个 CSS 文件编译为一个文件</li>
+<li>通过 Rails、Jekyll 或其他系统中提供过 CSS 文件合并功能</li>
+</ul>
+<h2 id="六、注释"><a href="#六、注释" class="headerlink" title="六、注释"></a>六、注释</h2><p>确保你的代码能够自描述、注释良好并且易于他人理解，可以很大程度地提高可维护性。</p>
+<p>好的代码注释能够传达<strong>上下文关系</strong>和<strong>代码目的</strong>。不要简单地重申组件或 class 名称。</p>
+<p>对于较长的注释，务必书写完整的句子；对于一般性注解，可以书写简洁的短语。</p>
+<h2 id="七、Less-和-Sass"><a href="#七、Less-和-Sass" class="headerlink" title="七、Less 和 Sass"></a>七、Less 和 Sass</h2><h3 id="7-1-操作符"><a href="#7-1-操作符" class="headerlink" title="7.1 操作符"></a>7.1 操作符</h3><p>为了提高可读性，在圆括号中的数学计算表达式的数值、变量和操作符之间均添加一个空格。</p>
+<h3 id="7-2-嵌套"><a href="#7-2-嵌套" class="headerlink" title="7.2 嵌套"></a>7.2 嵌套</h3><p>避免不必要的嵌套。这是因为虽然你可以使用嵌套，但是并不意味着应该使用嵌套。只有在必须将样式限制在父元素内（也就是后代选择器），并且存在多个需要嵌套的元素时才使用嵌套。</p>
+<h2 id="八、编辑器配置"><a href="#八、编辑器配置" class="headerlink" title="八、编辑器配置"></a>八、编辑器配置</h2><p>将你的编辑器按照下面的配置进行设置，以避免常见的代码不一致和差异：</p>
+<ul>
+<li>用两个空格代替制表符（soft-tab 即用空格代表 tab 符）。</li>
+<li>保存文件时，删除尾部的空白符。</li>
+<li>设置文件编码为 UTF-8。</li>
+<li>在文件结尾添加一个空白行。</li>
+</ul>
+<p>将这些配置信息添加到项目的 <code>.editorconfig</code> 文件中</p>
+<quote>生命的意义不仅是活着，而是我们给别人的生命带来了何种不同。</quote>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2019/05/01/display-grid/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/g8/wallhaven-g82533.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/g8/wallhaven-g82533.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Grid 网格布局</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "UzL1enXRO1jguOtO15OeE8j3-9Nh9j0Va",
+        appKey: "aSJSxXuaCtGN5dnKRKEsfm4k",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="leekiwi.github.io" class="profile gravatar"><img src="" itemprop="image" alt="kiwi" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="leekiwi.github.io" itemprop="url" rel="author">kiwi</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>coding</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
