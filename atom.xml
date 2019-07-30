@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leekiwi.github.io/"/>
-  <updated>2019-07-30T01:56:46.147Z</updated>
+  <updated>2019-07-30T06:17:33.793Z</updated>
   <id>https://leekiwi.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>编码规范 （一）HTML</title>
+    <link href="https://leekiwi.github.io/2019/05/26/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83(%E4%B8%80)HTML/"/>
+    <id>https://leekiwi.github.io/2019/05/26/编码规范(一)HTML/</id>
+    <published>2019-05-26T01:34:18.000Z</published>
+    <updated>2019-07-30T06:17:33.793Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a name=&quot;df368884&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://leekiwi.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="css" scheme="https://leekiwi.github.io/tags/css/"/>
+    
+      <category term="web前端" scheme="https://leekiwi.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>编码规范（二）CSS</title>
     <link href="https://leekiwi.github.io/2019/05/26/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83(%E4%BA%8C)CSS/"/>
     <id>https://leekiwi.github.io/2019/05/26/编码规范(二)CSS/</id>
     <published>2019-05-26T01:34:18.000Z</published>
-    <updated>2019-07-30T01:56:46.147Z</updated>
+    <updated>2019-07-30T05:58:23.443Z</updated>
     
     <summary type="html">
     
@@ -34,7 +63,7 @@
     
     </summary>
     
-      <category term="前端技术" scheme="https://leekiwi.github.io/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://leekiwi.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="css" scheme="https://leekiwi.github.io/tags/css/"/>
@@ -66,11 +95,41 @@
   </entry>
   
   <entry>
+    <title>JS 运算符的优先级</title>
+    <link href="https://leekiwi.github.io/2018/10/18/JS%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7/"/>
+    <id>https://leekiwi.github.io/2018/10/18/JS运算符优先级/</id>
+    <published>2018-10-18T15:54:05.000Z</published>
+    <updated>2019-07-30T06:19:23.024Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;运算符的优先级决定了表达式中运算执行的先后顺序，优先级高的运算符最先被执行。&lt;/p&gt;
+&lt;p&gt;&lt;a href&gt;&lt;/a&gt;&lt;br&gt;&lt;a name=&quot;4bafc098&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;结合性&quot;&gt;&lt;a href=&quot;#结合性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://leekiwi.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="技术" scheme="https://leekiwi.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="JavaScript" scheme="https://leekiwi.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo-Theme-Sakura</title>
-    <link href="https://leekiwi.github.io/2018/12/12/Hexo-Theme-Sakura/"/>
-    <id>https://leekiwi.github.io/2018/12/12/Hexo-Theme-Sakura/</id>
-    <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2019-07-30T01:29:59.206Z</updated>
+    <link href="https://leekiwi.github.io/2016/12/12/Hexo-Theme-Sakura/"/>
+    <id>https://leekiwi.github.io/2016/12/12/Hexo-Theme-Sakura/</id>
+    <published>2016-12-12T14:16:01.000Z</published>
+    <updated>2019-07-30T06:18:52.268Z</updated>
     
     <summary type="html">
     
