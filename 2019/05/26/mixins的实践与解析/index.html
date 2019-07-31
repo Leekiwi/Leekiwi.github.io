@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2016 | Little ice</title>
+  <title itemprop="name">mixins的实践与解析 | Little ice</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -383,162 +383,432 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://w.wallhaven.cc/full/p2/wallhaven-p2v769.jpg);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/p2/wallhaven-p2v769.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      mixins的实践与解析</h1>
+      <p class="entry-census">
+        <span>
+          <a href="leekiwi.github.io">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href="leekiwi.github.io">kiwi</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-5-26<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2019年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      05月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2019/05/26/编码规范(二)CSS/">
-                          <span style="color:#0bf;">
-                          26日09:34:18</span>
-                          编码规范（二）CSS
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2019/05/26/编码规范(一)HTML/">
-                          <span style="color:#0bf;">
-                          26日09:34:18</span>
-                          编码规范 （一）HTML
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2019/05/26/mixins的实践与解析/">
-                          <span style="color:#0bf;">
-                          26日09:34:18</span>
-                          mixins的实践与解析
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2019/05/01/display-grid/">
-                          <span style="color:#0bf;">
-                          01日11:17:11</span>
-                          Grid 网格布局
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2018年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      10月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2018/10/18/JS运算符优先级/">
-                          <span style="color:#0bf;">
-                          18日23:54:05</span>
-                          JS 运算符的优先级
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2016年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2016/12/12/Hexo-Theme-Sakura/">
-                          <span style="color:#0bf;">
-                          12日22:16:01</span>
-                          Hexo-Theme-Sakura
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="mixins-的实践与解析"><a href="#mixins-的实践与解析" class="headerlink" title="mixins 的实践与解析"></a>mixins 的实践与解析</h1><p>vue 提供了 mixins 这个 API，可以让我们将组件中的可复用功能抽取出来，放入 mixin 中，然后在组件中引入 mixin，可以让组件显得不再臃肿，提高了代码的可复用性。</p>
+<p>如何理解 mixins 呢 ？我们可以将 mixins 理解成一个数组，数组中有单或多个 mixin，mixin 的本质就是一个 JS 对象，它可以有 data、created、methods 等等 vue 实例中拥有的所有属性，甚至可以在 mixins 中再次嵌套 mixins，It’s amazing !</p>
+<p>举个简单的栗子:</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+  &lt;h1&gt;{{ message }}&lt;/h1&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="javascript">const myMixin = {
+  data() {
+    return {
+      message: &#39;this is mixin message&#39;
+    }
+  },
+  created() {
+    console.log(&#39;mixin created&#39;)
+  }
+}
+
+const vm = new Vue({
+  el: &#39;#app&#39;,
+  mixins: [myMixin],
+  data() {
+    return {
+      message: &#39;this is vue instance message&#39;
+    }
+  },
+  created() {
+    console.log(this.message)
+    // =&gt; Root Vue Instance
+    console.log(&#39;vue instance created&#39;)
+    // =&gt; created myMixin
+    // =&gt; created Root Vue Instance
+  }
+})
+</code></pre>
+<p>mixins 与 Vue Instance 合并时，会将 created 等钩子函数合并成数组，mixins 的钩子优先调用，当 data、methods 对象键值冲突时，以组件优先。</p>
+<p>PS: 如果对 mixins 的概念还不太清的小伙伴，可以去 <a href="https://cn.vuejs.org/v2/guide/mixins.html" target="_blank" rel="noopener">vue 官方文档</a> 看一下 vue mixins 的基本概念和用法。</p>
+<p><a name="86a1d24f"></a></p>
+<h3 id="mixins-实现"><a href="#mixins-实现" class="headerlink" title="mixins 实现"></a>mixins 实现</h3><p>那 mixins 是如何实现的呢 ？当 vue 在实例化的时候，会调用 mergeOptions 函数进行 options 的合并，函数申明在 vue/src/core/util/options.js 文件。</p>
+<pre><code class="javascript">export function mergeOptions(
+  parent: Object,
+  child: Object,
+  vm?: Component
+): Object {
+  ...
+  // 如果有 child.extends 递归调用 mergeOptions 实现属性拷贝
+  const extendsFrom = child.extends
+  if (extendsFrom) {
+    parent = mergeOptions(parent, extendsFrom, vm)
+  }
+  // 如果有 child.mixins 递归调用 mergeOptions 实现属性拷贝
+  if (child.mixins) {
+    for (let i = 0, l = child.mixins.length; i &lt; l; i++) {
+      parent = mergeOptions(parent, child.mixins[i], vm)
+    }
+  }
+  // 申明 options 空对象，用来保存属性拷贝结果
+  const options = {}
+  let key
+  // 遍历 parent 对象，调用 mergeField 进行属性拷贝
+  for (key in parent) {
+    mergeField(key)
+  }
+  // 遍历 parent 对象，调用 mergeField 进行属性拷贝
+  for (key in child) {
+    if (!hasOwn(parent, key)) {
+      mergeField(key)
+    }
+  }
+  // 属性拷贝实现方法
+  function mergeField(key) {
+    // 穿透赋值，默认为 defaultStrat
+    const strat = strats[key] || defaultStrat
+    options[key] = strat(parent[key], child[key], vm, key)
+  }
+  return options
+}
+</code></pre>
+<p>为了保持代码简洁，已经将 mergeOptions 函数不重要的代码删除，剩余部分我们慢慢来看。</p>
+<pre><code class="javascript">const extendsFrom = child.extends
+if (extendsFrom) {
+  parent = mergeOptions(parent, extendsFrom, vm)
+}
+</code></pre>
+<p>首先申明 extendsFrom 变量保存 child.extends，如果 extendsFrom 为真，递归调用 mergeOptions 进行属性拷贝，并且将 merge 结果保存到 parent 变量。</p>
+<pre><code class="javascript">if (child.mixins) {
+  for (let i = 0, l = child.mixins.length; i &lt; l; i++) {
+    parent = mergeOptions(parent, child.mixins[i], vm)
+  }
+}
+</code></pre>
+<p>如果 child.mixins 为真，循环 mixins 数组，递归调用 mergeOptions 实现属性拷贝，仍旧将 merge 结果保存到 parent 变量。</p>
+<p>接下来是关于 parent、child 的属性赋值：</p>
+<pre><code class="javascript">const options = {}
+let key
+for (key in parent) {
+  mergeField(key)
+}
+for (key in child) {
+  if (!hasOwn(parent, key)) {
+    mergeField(key)
+  }
+}
+</code></pre>
+<p>申明 options 空对象，用来保存属性拷贝的结果，也作为递归调用 mergeOptions 的返回值。这里首先会调用 for…in 对 parent 进行循环，在循环中不断调用 mergeField 函数。</p>
+<p>接着调用 for…in 对 child 进行循环，这里有点不太一样，会调用 hasOwn 判断 parent 上是否有这个 key，如果没有再调用 mergeField 函数，这样避免了重复调用。</p>
+<p>那么这个 mergeField 函数到底是用来做什么的呢？</p>
+<pre><code class="javascript">function mergeField(key) {
+  // 穿透赋值，默认为 defaultStrat
+  const strat = strats[key] || defaultStrat
+  options[key] = strat(parent[key], child[key], vm, key)
+}
+</code></pre>
+<p>mergeField 函数接收一个 key，首先会申明 strat 变量，如果 strats[key] 为真，就将 strats[key] 赋值给 strat。</p>
+<pre><code class="javascript">const strats = config.optionMergeStrategies
+...
+optionMergeStrategies: Object.create(null),
+...
+</code></pre>
+<p>strats 其实就是 Object.create(null)，Object.create 用来创建一个新对象，strats 默认是调用 Object.create(null) 生成的空对象。</p>
+<p>顺便说一句，vue 也向外暴露了 Vue.config.optionMergeStrategies，可以实现自定义选项合并策略。</p>
+<p>如果 strats[key] 为假，这里会用 || 做穿透赋值，将 defaultStrat 默认函数赋值给 strat。</p>
+<pre><code class="javascript">const defaultStrat = function(parentVal: any, childVal: any): any {
+  return childVal === undefined ? parentVal : childVal
+}
+</code></pre>
+<p>defaultStrat 函数返回一个三元表达式，如果 childVal 为 undefined，返回 parentVal，否则返回 childVal，这里主要以 childVal 优先，这也是为什么有 component &gt; mixins &gt; extends 这样的优先级。</p>
+<p>mergeField 函数最后会将调用 strat 的结果赋值给 options[key]。</p>
+<p>mergeOptions 函数最后会 merge 所有 options、 mixins、 extends，并将 options 对象返回，然后再去实例化 vue。</p>
+<p><a name="9cf172ae"></a></p>
+<h3 id="钩子函数的合并"><a href="#钩子函数的合并" class="headerlink" title="钩子函数的合并"></a>钩子函数的合并</h3><p>我们来看看钩子函数是怎么进行合并的。</p>
+<pre><code class="javascript">function mergeHook(
+  parentVal: ?Array&lt;Function&gt;,
+  childVal: ?Function | ?Array&lt;Function&gt;
+): ?Array&lt;Function&gt; {
+  return childVal
+    ? parentVal
+      ? parentVal.concat(childVal)
+      : Array.isArray(childVal)
+      ? childVal
+      : [childVal]
+    : parentVal
+}
+LIFECYCLE_HOOKS.forEach(hook =&gt; {
+  strats[hook] = mergeHook
+})
+</code></pre>
+<p>循环 LIFECYCLE_HOOKS 数组，不断调用 mergeHook 函数，将返回值赋值给 strats[hook]。</p>
+<pre><code class="javascript">export const LIFECYCLE_HOOKS = [
+  &#39;beforeCreate&#39;,
+  &#39;created&#39;,
+  &#39;beforeMount&#39;,
+  &#39;mounted&#39;,
+  &#39;beforeUpdate&#39;,
+  &#39;updated&#39;,
+  &#39;beforeDestroy&#39;,
+  &#39;destroyed&#39;,
+  &#39;activated&#39;,
+  &#39;deactivated&#39;,
+  &#39;errorCaptured&#39;
+]
+</code></pre>
+<p>LIFECYCLE_HOOKS 就是申明的 vue 所有的钩子函数字符串。</p>
+<p>mergeHook 函数会返回 3 层嵌套的三元表达式。</p>
+<pre><code class="javascript">return childVal
+  ? parentVal
+    ? parentVal.concat(childVal)
+    : Array.isArray(childVal)
+    ? childVal
+    : [childVal]
+  : parentVal
+</code></pre>
+<p>第一层，如果 childVal 为真，返回第二层三元表达式，如果为假，返回 parentVal。<br>第二层，如果 parentVal 为真，返回 parentVal 和 childVal 合并后的数组，如果 parentVal 为假，返回第三层三元表达式。<br>第三层，如果 childVal 是数组，返回 childVal，否则将 childVal 包装成数组返回。</p>
+<pre><code class="javascript">new Vue({
+  created: [
+    function() {
+      console.log(&#39;冲冲冲！&#39;)
+    },
+    function() {
+      console.log(&#39;鸭鸭鸭！&#39;)
+    }
+  ]
+})
+// =&gt; 冲冲冲！
+// =&gt; 鸭鸭鸭！
+</code></pre>
+<p><a name="fe72cf94"></a></p>
+<h3 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h3><p>使用 vue 的小伙伴们，当然也少不了在项目中使用 element-ui。比如使用 Table 表格的时候，免不了申明 tableData、total、pageSize 一些 Table 表格、Pagination 分页需要的参数。</p>
+<p>我们可以将重复的 data、methods 写在一个 tableMixin 中。</p>
+<pre><code class="javascript">export default {
+  data() {
+    return {
+      total: 0,
+      pageNo: 1,
+      pageSize: 10,
+      tableData: [],
+      loading: false
+    }
+  },
+  created() {
+    this.searchData()
+  },
+  methods: {
+    // 预申明，防止报错
+    searchData() {},
+    handleSizeChange(size) {
+      this.pageSize = size
+      this.searchData()
+    },
+    handleCurrentChange(page) {
+      this.pageNo = page
+      this.searchData()
+    },
+    handleSearchData() {
+      this.pageNo = 1
+      this.searchData()
+    }
+  }
+}
+</code></pre>
+<p>当我们需要使用时直接引入即可：</p>
+<pre><code class="javascript">import tableMixin from &#39;./tableMixin&#39;
+
+export default {
+  ...
+  mixins: [tableMixin],
+  methods: {
+    searchData() {
+      ...
+    }
+  }
+}
+</code></pre>
+<p>我们在组件内会重新申明 searchData 方法，类似这种 methods 对象形式的 key，如果 key 相同，组件内的 key 会覆盖 tableMixin 中的 key。</p>
+<p>当然我们也可以在 mixins 中嵌套 mixins，申明 axiosMixin:</p>
+<pre><code class="javascript">import tableMixin from &#39;./tableMixin&#39;
+
+export default {
+  mixins: [tableMixin],
+  methods: {
+    handleFetch(url) {
+      const { pageNo, pageSize } = this
+      this.loading = true
+      this.axios({
+        method: &#39;post&#39;,
+        url,
+        data: {
+          ...this.params,
+          pageNo,
+          pageSize
+        }
+      })
+        .then(({ data = [] }) =&gt; {
+          this.tableData = data
+          this.loading = false
+        })
+        .catch(error =&gt; {
+          this.loading = false
+        })
+    }
+  }
+}
+</code></pre>
+<p>引入 axiosMixin：</p>
+<pre><code class="javascript">import axiosMixin from &#39;./axiosMixin&#39;
+export default {
+  ...
+  mixins: [axiosMixin],
+  created() {
+    this.handleFetch(&#39;/user/12345&#39;)
+  }
+}
+</code></pre>
+<p>在 axios 中，我们可以预先处理 axios 的 success、error 的后续调用，是不是少写了很多代码。</p>
+<p><a name="extend"></a></p>
+<h3 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h3><p>顺便讲一下 extend，与 mixins 相似，只能传入一个 options 对象，并且 mixins 的优先级比较高，会覆盖 extend 同名 key 值。</p>
+<pre><code class="javascript">// 如果有 child.extends 递归调用 mergeOptions 实现属性拷贝
+const extendsFrom = child.extends
+if (extendsFrom) {
+  parent = mergeOptions(parent, extendsFrom, vm)
+}
+// 如果有 child.mixins 递归调用 mergeOptions 实现属性拷贝
+if (child.mixins) {
+  for (let i = 0, l = child.mixins.length; i &lt; l; i++) {
+    parent = mergeOptions(parent, child.mixins[i], vm)
+  }
+}
+</code></pre>
+<p>在 mergeOptions 函数中，会先对 extends 进行属性拷贝，然后再对 mixin 进行拷贝，在调用 mergeField 函数的时候会优先取 child 的 key。</p>
+<p>虽然 extends 的同名 key 会被 mixins 的覆盖，但是 extends 是优先执行的。</p>
+<p><a name="25f9c7fa"></a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>注意一下 vue 中 mixins 的优先级，component &gt; mixins &gt; extends。</p>
+<p>我们暂且将 mixins 称作是组件模块化，灵活运用组件模块化，可以将组件内的重复代码提取出来，实现代码复用，也使我们的代码更加清晰，效率也大大提高。</p>
+<p>当然，mixins 还有更加神奇的操作等你去探索。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/05/26/编码规范(一)HTML/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/ox/wallhaven-ox5xrp.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/ox/wallhaven-ox5xrp.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                编码规范 （一）HTML</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/05/01/display-grid/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/g8/wallhaven-g82533.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/g8/wallhaven-g82533.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Grid 网格布局</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "UzL1enXRO1jguOtO15OeE8j3-9Nh9j0Va",
+        appKey: "aSJSxXuaCtGN5dnKRKEsfm4k",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="leekiwi.github.io" class="profile gravatar"><img src="" itemprop="image" alt="kiwi" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="leekiwi.github.io" itemprop="url" rel="author">kiwi</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>coding</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
