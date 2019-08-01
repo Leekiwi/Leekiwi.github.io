@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leekiwi.github.io/"/>
-  <updated>2019-08-01T02:58:28.157Z</updated>
+  <updated>2019-08-01T03:00:57.419Z</updated>
   <id>https://leekiwi.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://leekiwi.github.io/2019/05/27/nextTick/"/>
     <id>https://leekiwi.github.io/2019/05/27/nextTick/</id>
     <published>2019-05-27T01:34:18.000Z</published>
-    <updated>2019-08-01T02:58:28.157Z</updated>
+    <updated>2019-08-01T03:00:57.419Z</updated>
     
     <summary type="html">
     
-      mixins使用说明
+      nextTick食用指南
     
     </summary>
     
