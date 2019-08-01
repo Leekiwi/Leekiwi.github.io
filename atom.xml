@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leekiwi.github.io/"/>
-  <updated>2019-07-30T05:58:23.443Z</updated>
+  <updated>2019-08-01T02:58:28.157Z</updated>
   <id>https://leekiwi.github.io/</id>
   
   <author>
@@ -17,29 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>编码规范（二）CSS</title>
-    <link href="https://leekiwi.github.io/2019/05/26/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83(%E4%BA%8C)CSS/"/>
-    <id>https://leekiwi.github.io/2019/05/26/编码规范(二)CSS/</id>
-    <published>2019-05-26T01:34:18.000Z</published>
-    <updated>2019-07-30T05:58:23.443Z</updated>
+    <title>nextTick原理解析</title>
+    <link href="https://leekiwi.github.io/2019/05/27/nextTick/"/>
+    <id>https://leekiwi.github.io/2019/05/27/nextTick/</id>
+    <published>2019-05-27T01:34:18.000Z</published>
+    <updated>2019-08-01T02:58:28.157Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;统一的编码规范，有助于编写高质量、可读性强、易于维护的代码。&lt;/p&gt;
-&lt;p&gt;CSS 代码的编写，应该尽量简洁、高性能、高可维护性，达到三者的一个最佳平衡。不能为了简洁牺牲可维护性。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本文引自：&lt;a href=&quot;https://codeguide.bootcss.com/#html-syntax&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;编码规范 by @mdo&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;黄金定律&lt;/strong&gt;&lt;br&gt;不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。&lt;/p&gt;
-&lt;/blockquote&gt;
+      mixins使用说明
     
     </summary>
     
       <category term="技术" scheme="https://leekiwi.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="css" scheme="https://leekiwi.github.io/tags/css/"/>
+      <category term="技术" scheme="https://leekiwi.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="web前端" scheme="https://leekiwi.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="vue" scheme="https://leekiwi.github.io/tags/vue/"/>
     
   </entry>
   
@@ -60,6 +55,33 @@
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
         
       
+    
+    </summary>
+    
+      <category term="技术" scheme="https://leekiwi.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="css" scheme="https://leekiwi.github.io/tags/css/"/>
+    
+      <category term="web前端" scheme="https://leekiwi.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编码规范（二）CSS</title>
+    <link href="https://leekiwi.github.io/2019/05/26/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83(%E4%BA%8C)CSS/"/>
+    <id>https://leekiwi.github.io/2019/05/26/编码规范(二)CSS/</id>
+    <published>2019-05-26T01:34:18.000Z</published>
+    <updated>2019-07-30T05:58:23.443Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;统一的编码规范，有助于编写高质量、可读性强、易于维护的代码。&lt;/p&gt;
+&lt;p&gt;CSS 代码的编写，应该尽量简洁、高性能、高可维护性，达到三者的一个最佳平衡。不能为了简洁牺牲可维护性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文引自：&lt;a href=&quot;https://codeguide.bootcss.com/#html-syntax&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;编码规范 by @mdo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;黄金定律&lt;/strong&gt;&lt;br&gt;不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     

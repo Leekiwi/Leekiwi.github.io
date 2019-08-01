@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">编码规范 （一）HTML | Little ice</title>
+  <title itemprop="name">nextTick原理解析 | Little ice</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -389,11 +389,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://w.wallhaven.cc/full/ox/wallhaven-ox5xrp.png);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/ox/wallhaven-ox5xrp.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      编码规范 （一）HTML</h1>
+      nextTick原理解析</h1>
       <p class="entry-census">
         <span>
           <a href="leekiwi.github.io">
@@ -401,11 +401,11 @@
           </a>
         </span>
         <span>
-          <a href="leekiwi.github.io"></a>
+          <a href="leekiwi.github.io">kiwi</a>
         </span>
         <span class="bull">
         ·</span>
-        2019-5-26<span class="bull">
+        2019-5-27<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -419,91 +419,168 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p><a name="df368884"></a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>统一的编码规范，有助于编写高质量、稳定、可维护的代码。</p>
+          <h1 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a>nextTick</h1><p><a name="df368884"></a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>nextTick 是 Vue 的一个核心功能，在 Vue 内部实现中也经常用到 nextTick。但是，很多新手不理解 nextTick 的原理，甚至不清楚 nextTick 的作用。</p>
+<p>那么，我们就先来看看 nextTick 是什么。</p>
+<p><a name="3b76c6e6"></a></p>
+<h3 id="nextTick-功能"><a href="#nextTick-功能" class="headerlink" title="nextTick 功能"></a>nextTick 功能</h3><p>看看官方文档的描述：</p>
+<p>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。</p>
+<p>再看看官方示例：</p>
+<pre><code class="javascript">// 修改数据
+vm.msg = &#39;Hello&#39;
+// DOM 还没有更新
+Vue.nextTick(function () {
+  // DOM 更新了
+})
+
+// 作为一个 Promise 使用 (2.1.0 起新增，详见接下来的提示)
+Vue.nextTick()
+  .then(function () {
+    // DOM 更新了
+  })
+</code></pre>
 <blockquote>
-<p>本文引自：<a href="https://codeguide.bootcss.com/#html-syntax" target="_blank" rel="noopener">编码规范 by @mdo</a><br><strong>黄金定律</strong><br><br>不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。<br><strong>实用为王</strong><br><br>尽量遵循 HTML 标准和语义，但是不要以牺牲实用性为代价。任何时候都要尽量使用最少的标签并保持最小的复杂度。</p>
+<p>2.1.0 起新增：如果没有提供回调且在支持 Promise 的环境中，则返回一个 Promise。请注意 Vue 不自带 Promise 的 polyfill，所以如果你的目标浏览器不原生支持 Promise (IE：你们都看我干嘛)，你得自己提供 polyfill。</p>
 </blockquote>
-<p><a href></a><br><a name="60f7fb42"></a></p>
-<h2 id="一、语法"><a href="#一、语法" class="headerlink" title="一、语法"></a>一、语法</h2><ul>
-<li>使用两个空格来代替制表符</li>
-<li>嵌套元素应当缩进一次（即两个空格）</li>
-<li>对于属性的定义，确保全部使用双引号，绝不要使用单引号。</li>
-<li>不要在自闭合元素的尾部添加斜线</li>
-<li>不要省略可选的结束标签</li>
-</ul>
-<p><a href></a><br><a name="85870bb9"></a></p>
-<h2 id="二、HTML5-doctype"><a href="#二、HTML5-doctype" class="headerlink" title="二、HTML5 doctype"></a>二、HTML5 doctype</h2><p>为每个 HTML 页面的第一行添加标准模式的声明，这样能够确保在每个浏览器中拥有一致的展现。</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-  &lt;/head&gt;
-&lt;/html&gt;
+<p>可以看到，nextTick 主要功能就是改变数据后让回调函数作用于 dom 更新后。很多人一看到这里就懵逼了，为什么需要在 dom 更新后再执行回调函数，我修改了数据后，不是 dom 自动就更新了吗？</p>
+<p>这个和 JS 中的 Event Loop 有关，网上教程不计其数，在此就不再赘述了。建议明白 Event Loop 后再继续向下阅读本文。</p>
+<p>举个实际的例子：</p>
+<p>我们有个带有分页器的表格，每次翻页需要选中第一项。正常情况下，我们想的是点击翻页器，向后台获取数据，更新表格数据，操纵表格 API 选中第一项。</p>
+<p>但是，你会发现，表格数据是更新了，但是并没有选中第一项。因为，你选中第一项时，虽然数据更新了，但是 DOM 并没有更新。此时，你可以使用 nextTick ，在DOM更新后再操纵表格第一项的选中。</p>
+<p>那么，nextTick 到底做了什么了才能实现在 DOM 更新后执行回调函数？</p>
+<p><a name="8ce750bd"></a></p>
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>nextTick 的源码位于<code>src/core/util/next-tick.js</code>，总计118行，十分的短小精悍，十分适合初次阅读源码的同学。</p>
+<p>nextTick源码主要分为两块：</p>
+<ol>
+<li><p>能力检测</p>
+</li>
+<li><p>根据能力检测以不同方式执行回调队列</p>
+</li>
+</ol>
+<p><a name="a5e8011d"></a></p>
+<h4 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h4><p>这一块其实很简单，众所周知，Event Loop 分为宏任务（macro task）以及微任务（ micro task），不管执行宏任务还是微任务，完成后都会进入下一个 tick，并在两个 tick 之间执行UI渲染。</p>
+<p>但是，宏任务耗费的时间是大于微任务的，所以在浏览器支持的情况下，优先使用微任务。如果浏览器不支持微任务，使用宏任务；但是，各种宏任务之间也有效率的不同，需要根据浏览器的支持情况，使用不同的宏任务。</p>
+<p>nextTick在能力检测这一块，就是遵循的这种思想。</p>
+<pre><code class="javascript">// Determine (macro) task defer implementation.
+// Technically setImmediate should be the ideal choice, but it&#39;s only available
+// in IE. The only polyfill that consistently queues the callback after all DOM
+// events triggered in the same loop is by using MessageChannel.
+/* istanbul ignore if */
+// 如果浏览器不支持Promise，使用宏任务来执行nextTick回调函数队列
+// 能力检测，测试浏览器是否支持原生的setImmediate（setImmediate只在IE中有效）
+if (typeof setImmediate !== &#39;undefined&#39; &amp;&amp; isNative(setImmediate)) {
+  // 如果支持，宏任务（ macro task）使用setImmediate
+  macroTimerFunc = () =&gt; {
+    setImmediate(flushCallbacks)
+  }
+  // 同上
+} else if (typeof MessageChannel !== &#39;undefined&#39; &amp;&amp; (
+  isNative(MessageChannel) ||
+  // PhantomJS
+  MessageChannel.toString() === &#39;[object MessageChannelConstructor]&#39;
+)) {
+  const channel = new MessageChannel()
+  const port = channel.port2
+  channel.port1.onmessage = flushCallbacks
+  macroTimerFunc = () =&gt; {
+    port.postMessage(1)
+  }
+} else {
+  /* istanbul ignore next */
+  // 都不支持的情况下，使用setTimeout
+  macroTimerFunc = () =&gt; {
+    setTimeout(flushCallbacks, 0)
+  }
+}
 </code></pre>
-<p><a href></a><br><a name="deff0eaf"></a></p>
-<h2 id="三、语言属性"><a href="#三、语言属性" class="headerlink" title="三、语言属性"></a>三、语言属性</h2><p>强烈建议为 html 根元素指定 <code>lang</code> 属性，从而为文档设置正确的语言。这将有助于语音合成工具确定其所应该采用的发音，有助于翻译工具确定其翻译时所应遵守的规则等等。</p>
-<pre><code class="html">&lt;html lang=&quot;en-us&quot;&gt;
+<p>首先，检测浏览器是否支持 setImmediate，不支持就使用 MessageChannel，再不支持只能使用效率最差但是兼容性最好的 setTimeout了。</p>
+<p>之后，检测浏览器是否支持 Promise，如果支持，则使用 Promise 来执行回调函数队列，毕竟微任务速度大于宏任务。如果不支持的话，就只能使用宏任务来执行回调函数队列。</p>
+<p><a name="0b724215"></a></p>
+<h4 id="执行回调函数队列"><a href="#执行回调函数队列" class="headerlink" title="执行回调函数队列"></a>执行回调函数队列</h4><p>执行回调函数队列的代码刚好在一头一尾</p>
+<pre><code class="javascript">// 回调函数队列
+const callbacks = []
+// 异步锁
+let pending = false
 
-&lt;/html&gt;
+// 执行回调函数
+function flushCallbacks () {
+  // 重置异步锁
+  pending = false
+  // 防止出现nextTick中包含nextTick时出现问题，在执行回调函数队列前，提前复制备份，清空回调函数队列
+  const copies = callbacks.slice(0)
+  callbacks.length = 0
+  // 执行回调函数队列
+  for (let i = 0; i &lt; copies.length; i++) {
+    copies[i]()
+  }
+}
+
+...
+
+// 我们调用的nextTick函数
+export function nextTick (cb?: Function, ctx?: Object) {
+  let _resolve
+  // 将回调函数推入回调队列
+  callbacks.push(() =&gt; {
+    if (cb) {
+      try {
+        cb.call(ctx)
+      } catch (e) {
+        handleError(e, ctx, &#39;nextTick&#39;)
+      }
+    } else if (_resolve) {
+      _resolve(ctx)
+    }
+  })
+  // 如果异步锁未锁上，锁上异步锁，调用异步函数，准备等同步函数执行完后，就开始执行回调函数队列
+  if (!pending) {
+    pending = true
+    if (useMacroTask) {
+      macroTimerFunc()
+    } else {
+      microTimerFunc()
+    }
+  }
+  // $flow-disable-line
+  // 2.1.0新增，如果没有提供回调，并且支持Promise，返回一个Promise
+  if (!cb &amp;&amp; typeof Promise !== &#39;undefined&#39;) {
+    return new Promise(resolve =&gt; {
+      _resolve = resolve
+    })
+  }
+}
 </code></pre>
-<p><a href></a><br><a name="43457905"></a></p>
-<h2 id="四、IE-兼容模式"><a href="#四、IE-兼容模式" class="headerlink" title="四、IE 兼容模式"></a>四、IE 兼容模式</h2><p>IE 支持通过特定的 <code>&lt;meta&gt;</code> 标签来确定绘制当前页面所应该采用的 IE 版本。除非有强烈的特殊需求，否则最好是设置为 <code>edge mode</code>，从而通知 IE 采用其所支持的最新的模式。</p>
-<pre><code class="html">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot;&gt;
+<p>总体流程就是：接收回调函数，将回调函数推入回调函数队列中。</p>
+<p>同时，在接收第一个回调函数时，执行能力检测中对应的异步方法（异步方法中调用了回调函数队列）。</p>
+<p>如何保证只在接收第一个回调函数时执行异步方法？</p>
+<p>nextTick 源码中使用了一个异步锁的概念，即接收第一个回调函数时，先关上锁，执行异步方法。此时，浏览器处于等待执行完同步代码就执行异步代码的情况。</p>
+<p>打个比喻：相当于一群旅客准备上车，当第一个旅客上车的时候，车开始发动，准备出发，等到所有旅客都上车后，就可以正式开车了。</p>
+<p>当然执行 flushCallbacks 函数时有个难以理解的点，即：为什么需要备份回调函数队列？执行的也是备份的回调函数队列？</p>
+<p>因为，会出现这么一种情况：nextTick 的回调函数中还使用 nextTick。如果 flushCallbacks 不做特殊处理，直接循环执行回调函数，会导致里面 nextTick 中的回调函数会进入回调队列。这就相当于，下一个班车的旅客上了上一个班车。</p>
+<p><a name="fdbfe93a"></a></p>
+<h3 id="实现一个简易的nextTick"><a href="#实现一个简易的nextTick" class="headerlink" title="实现一个简易的nextTick"></a>实现一个简易的nextTick</h3><p>说了这么多，我们来实现一个简单的 nextTick：</p>
+<pre><code class="javascript">let callbacks = []
+let pending = false
+
+function nextTick (cb) {
+    callbacks.push(cb)
+
+    if (!pending) {
+        pending = true
+        setTimeout(flushCallback, 0)
+    }
+}
+
+function flushCallback () {
+    pending = false
+    let copies = callbacks.slice()
+    callbacks.length = 0
+    copies.forEach(copy =&gt; {
+        copy()
+    })
+}
 </code></pre>
-<p><a href></a><br><a name="681ac61b"></a></p>
-<h2 id="五、字符编码"><a href="#五、字符编码" class="headerlink" title="五、字符编码"></a>五、字符编码</h2><p>通过明确声明字符编码，能够确保浏览器快速并容易的判断页面内容的渲染方式。这样做的好处是，可以避免在 HTML 中使用字符实体标记，从而全部与文档编码一致（一般采用 UTF-8 编码）。</p>
-<pre><code class="html">&lt;meta charset=&quot;UTF-8&quot;&gt;
-</code></pre>
-<p><a href></a><br><a name="b2faff20"></a></p>
-<h2 id="六、引入-CSS-和-JavaScript-文件"><a href="#六、引入-CSS-和-JavaScript-文件" class="headerlink" title="六、引入 CSS 和 JavaScript 文件"></a>六、引入 CSS 和 JavaScript 文件</h2><p>根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 <code>type</code> 属性，因为 <code>text/css</code> 和 <code>text/javascript</code> 分别是它们的默认值。</p>
-<pre><code class="html">&lt;!-- link --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;code-guide.css&quot;&gt;
-
-&lt;!-- style --&gt;
-&lt;style&gt;&lt;/style&gt;
-
-&lt;!-- script --&gt;
-&lt;script src=&quot;code-guide.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<p><a href></a><br><a name="e4f2f4b2"></a></p>
-<h2 id="七、属性顺序"><a href="#七、属性顺序" class="headerlink" title="七、属性顺序"></a>七、属性顺序</h2><p>HTML 属性应当按照以下给出的顺序依次排列，确保代码的易读性。</p>
-<ul>
-<li>class</li>
-<li>id, name</li>
-<li>data-*</li>
-<li>src, for, type, href, value</li>
-<li>title, alt</li>
-<li>role, aria-*</li>
-</ul>
-<p>class 用于标识高度可复用组件，因此应该排在首位。id 用于标识具体组件，应当谨慎使用，因此排在第二位。</p>
-<pre><code class="html">&lt;a class=&quot;...&quot; id=&quot;...&quot; data-toggle=&quot;modal&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
-
-&lt;input class=&quot;form-control&quot; type=&quot;text&quot;&gt;
-
-![](...)
-</code></pre>
-<p><a href></a><br><a name="19a576b3"></a></p>
-<h2 id="八、布尔型属性"><a href="#八、布尔型属性" class="headerlink" title="八、布尔型属性"></a>八、布尔型属性</h2><p>布尔型属性可以在声明时不赋值，直接写属性名认为是 <code>true</code>，不写认为是 <code>false</code>。</p>
-<pre><code class="html">&lt;input type=&quot;text&quot; disabled required&gt;
-
-&lt;input type=&quot;checkbox&quot; value=&quot;1&quot; checked&gt;
-
-&lt;select&gt;
-  &lt;option value=&quot;1&quot; selected&gt;1&lt;/option&gt;
-&lt;/select&gt;
-</code></pre>
-<p><a href></a><br><a name="d813c59a"></a></p>
-<h2 id="九、减少标签的数量"><a href="#九、减少标签的数量" class="headerlink" title="九、减少标签的数量"></a>九、减少标签的数量</h2><p>编写 HTML 代码时，尽量避免多余的父元素。很多时候，这需要迭代和重构来实现。</p>
-<pre><code class="html">&lt;!-- 一般 --&gt;
-&lt;span class=&quot;avatar&quot;&gt;
-  ![](...)
-&lt;/span&gt;
-
-&lt;!-- 更好 --&gt;
-![](...)
-</code></pre>
-<p><a href></a><br><a name="2024fefb"></a></p>
-<h2 id="十、尽量避免使用-JavaScript-生成的标签"><a href="#十、尽量避免使用-JavaScript-生成的标签" class="headerlink" title="十、尽量避免使用 JavaScript 生成的标签"></a>十、尽量避免使用 JavaScript 生成的标签</h2><p>通过 JavaScript 生成的标签让内容变得不易查找、编辑，对搜索引擎不友好，并且降低性能。能避免时尽量避免。</p>
+<p>可以看到，在简易版的 nextTick 中，通过 nextTick 接收回调函数，通过 setTimeout 来异步执行回调函数。通过这种方式，可以实现在下一个 tick 中执行回调函数，即在UI重新渲染后执行回调函数。</p>
 
         </div>
         <!-- .entry-content -->
@@ -531,36 +608,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2019/05/27/nextTick/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                nextTick原理解析</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2019/05/26/编码规范(二)CSS/" rel="next">
+            <a href="/2019/05/26/编码规范(一)HTML/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/g8/wallhaven-g8p8ee.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/g8/wallhaven-g8p8ee.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/ox/wallhaven-ox5xrp.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/ox/wallhaven-ox5xrp.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                编码规范（二）CSS</h3>
+                编码规范 （一）HTML</h3>
                 <hr>
               </div>
             </a>
@@ -584,11 +644,11 @@
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="leekiwi.github.io" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <a href="leekiwi.github.io" class="profile gravatar"><img src="" itemprop="image" alt="kiwi" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="leekiwi.github.io" itemprop="url" rel="author"></a>
+            <a href="leekiwi.github.io" itemprop="url" rel="author">kiwi</a>
             </h3>
           </div>
         </div>
