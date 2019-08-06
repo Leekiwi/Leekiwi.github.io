@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">vue 父子组件通信 | Little ice</title>
+  <title itemprop="name">Little ice</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -383,217 +383,169 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1565080888107&amp;di=47a989b4d6708eaffe853d390cc4a1af&amp;imgtype=0&amp;src=http%3A%2F%2Fwx1.sinaimg.cn%2Fcrop.152.0.907.509.1000%2F006CcH6gly1fo0swoymtej30xr0e6q4g.jpg);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1565080888107&amp;di=47a989b4d6708eaffe853d390cc4a1af&amp;imgtype=0&amp;src=http%3A%2F%2Fwx1.sinaimg.cn%2Fcrop.152.0.907.509.1000%2F006CcH6gly1fo0swoymtej30xr0e6q4g.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      vue 父子组件通信</h1>
-      <p class="entry-census">
-        <span>
-          <a href="leekiwi.github.io">
-            <img src="">
-          </a>
-        </span>
-        <span>
-          <a href="leekiwi.github.io">kiwi</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2019-6-12<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
+      <div class="blank" style="padding-top: 0px;"></div>
 <div id="content" class="site-content">
+  
+  <div class="notice" style="margin-top:60px">
+    <i class="iconfont icon-notification">
+    </i>
+    <div class="notice-content">个人技术博客,用于记录、分享...</div>
+  </div>
+  
+  <div class="top-feature-row">
+  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
+  <i class="fa fa-anchor" aria-hidden="true">
+  </i>
+  START:DASH!!</h1>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="/theme-sakura/" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/startdash/sakura.md.png">
+        </div>
+        <div class="info">
+          <h3>Sakura</h3>
+          <p>本站 hexo 主题</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="http://space.bilibili.com/391385119" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/startdash/bilibili.jpg">
+        </div>
+        <div class="info">
+          <h3>Bilibili</h3>
+          <p>b站视频</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="/" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/startdash/wangshiwu.jpg">
+        </div>
+        <div class="info">
+          <h3>kiwi的万事屋</h3>
+          <p>技术服务</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="vue-父子组件通信"><a href="#vue-父子组件通信" class="headerlink" title="vue 父子组件通信"></a>vue 父子组件通信</h1><blockquote>
-<p>父组件调用一个子组件，父组件的属性如何能够传递给子组件使用，子组件里的数据如何能传递给父组件？下面我们通过一个demo来解答这个问题。</p>
-</blockquote>
-<h1 id="父组件"><a href="#父组件" class="headerlink" title="父组件"></a>父组件</h1><pre><code class="html">&lt;template&gt;
-  &lt;div class=&quot;parent&quot;&gt;
-    我是父组件
-    &lt;!--父组件监听子组件触发的say方法，调用自己的parentSay方法--&gt;
-    &lt;!--通过:msg将父组件的数据传递给子组件--&gt;
-    &lt;children :msg=&quot;msg&quot; @say=&quot;parentSay&quot;&gt;&lt;/children&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-import Children from &#39;./children.vue&#39;
-
-export default {
-  data () {
-    return {
-      msg: &#39;hello, children&#39;
-    }
-  },
-
-  methods: {
-      // 参数就是子组件传递出来的数据
-      parentSay(msg){
-          console.log(msg) // hello, parent
-      }
-  },
-
-  // 引入子组件
-  components:{
-      children: Children
-  }
-}
-&lt;/script&gt;
-</code></pre>
-<h1 id="子组件"><a href="#子组件" class="headerlink" title="子组件"></a>子组件</h1><pre><code class="html">&lt;template&gt;
-  &lt;div class=&quot;hello&quot;&gt;
-    &lt;div class=&quot;children&quot; @click=&quot;say&quot;&gt;
-      我是子组件
-      &lt;div&gt;
-        父组件对我说：{{msg}}
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  export default {
-      //父组件通过props属性传递进来的数据
-      props: {
-          msg: {
-              type: String,
-              default: () =&gt; {
-                  return &#39;&#39;
-              }
-          }
-      },
-      data () {
-        return {
-            childrenSay: &#39;hello, parent&#39;
-        }
-      },
-
-      methods: {
-          // 子组件通过emit方法触发父组件中定义好的函数，从而将子组件中的数据传递给父组件
-          say(){
-              this.$emit(&#39;say&#39; , this.childrenSay);
-          }
-      }
-  }
-&lt;/script&gt;
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>vue的父子组件间通信可以总结成一句话：<br>父组件通过 prop 给子组件下发数据，子组件通过$emit触发事件给父组件发送消息，即 prop 向下传递，事件向上传递。</p>
-</blockquote>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏<div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.6.3/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2019/06/15/v-slot小结/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/6k/wallhaven-6kdkrx.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/6k/wallhaven-6kdkrx.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                v-slot使用小结</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2019/05/27/nextTick/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                nextTick原理解析</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
+      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
+      <i class="fa fa-envira" aria-hidden="true"></i>
+      Discovery</h1>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "UzL1enXRO1jguOtO15OeE8j3-9Nh9j0Va",
-        appKey: "aSJSxXuaCtGN5dnKRKEsfm4k",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
+  <!-- 首页默认取最最新文章集 -->
+  
+    
+<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
 
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="leekiwi.github.io" class="profile gravatar"><img src="" itemprop="image" alt="kiwi" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="leekiwi.github.io" itemprop="url" rel="author">kiwi</a>
-            </h3>
-          </div>
+  <div class="post-thumb">
+    <a href="/2018/10/18/JS运算符优先级/">
+      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/x1/wallhaven-x1yd53.jpg">
+    </a>
+  </div>
+  <div class="post-content-wrap">
+    <div class="post-content">
+      <div class="post-date">
+        <i class="iconfont icon-time">
+        </i>2018-10-18 23:10</div>
+      <a href="/2018/10/18/JS运算符优先级/" class="post-title">
+        <h3>JS 运算符的优先级</h3>
+      </a>
+      <div class="post-meta">
+        <span><i class="fa fa-tags"></i>
+        
+            <a href="/tags/技术/">技术<em>·</em></a>
+          
+            <a href="/tags/JavaScript/">JavaScript<em>·</em></a>
+          
+        </span>
+        <span>
+          <i class="iconfont icon-file"></i>
+          
+            <a href="/categories/技术/">技术</a>
+          
+        </span>
+      </div>
+      <div class="float-content">
+        <p></p>
+        <div class="post-bottom">
+          <a href="/2018/10/18/JS运算符优先级/" class="button-normal">
+            <i class="iconfont icon-caidan"></i>
+          </a>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>coding</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+      </div>
+    </div>
+  </div>
+</article>
+  
+    
+<article  class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
+
+  <div class="post-thumb">
+    <a href="/2016/12/12/Hexo-Theme-Sakura/">
+      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png">
+    </a>
+  </div>
+  <div class="post-content-wrap">
+    <div class="post-content">
+      <div class="post-date">
+        <i class="iconfont icon-time">
+        </i>2016-12-12 22:12</div>
+      <a href="/2016/12/12/Hexo-Theme-Sakura/" class="post-title">
+        <h3>Hexo-Theme-Sakura</h3>
+      </a>
+      <div class="post-meta">
+        <span><i class="fa fa-tags"></i>
+        
+            <a href="/tags/web/">web<em>·</em></a>
+          
+        </span>
+        <span>
+          <i class="iconfont icon-file"></i>
+          
+            <a href="/categories/技术/">技术</a>
+          
+        </span>
+      </div>
+      <div class="float-content">
+        <p>hexo-sakura主题使用教程</p>
+        <div class="post-bottom">
+          <a href="/2016/12/12/Hexo-Theme-Sakura/" class="button-normal">
+            <i class="iconfont icon-caidan"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+  
+
+
+    </main>
+      <!-- 首页默认取最最新文章集 -->
+    <!-- 
+      <nav class="navigator">
+        
+        <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      </nav>
+     -->
+  </div>
+  
 </div>
-
-
 
     </div>    
     <div class="ins-search">

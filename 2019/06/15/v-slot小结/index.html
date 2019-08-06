@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">vue 父子组件通信 | Little ice</title>
+  <title itemprop="name">v-slot使用小结 | Little ice</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -389,11 +389,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1565080888107&amp;di=47a989b4d6708eaffe853d390cc4a1af&amp;imgtype=0&amp;src=http%3A%2F%2Fwx1.sinaimg.cn%2Fcrop.152.0.907.509.1000%2F006CcH6gly1fo0swoymtej30xr0e6q4g.jpg);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1565080888107&amp;di=47a989b4d6708eaffe853d390cc4a1af&amp;imgtype=0&amp;src=http%3A%2F%2Fwx1.sinaimg.cn%2Fcrop.152.0.907.509.1000%2F006CcH6gly1fo0swoymtej30xr0e6q4g.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://w.wallhaven.cc/full/6k/wallhaven-6kdkrx.png);" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/6k/wallhaven-6kdkrx.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      vue 父子组件通信</h1>
+      v-slot使用小结</h1>
       <p class="entry-census">
         <span>
           <a href="leekiwi.github.io">
@@ -405,7 +405,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2019-6-12<span class="bull">
+        2019-6-15<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -419,85 +419,87 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="vue-父子组件通信"><a href="#vue-父子组件通信" class="headerlink" title="vue 父子组件通信"></a>vue 父子组件通信</h1><blockquote>
-<p>父组件调用一个子组件，父组件的属性如何能够传递给子组件使用，子组件里的数据如何能传递给父组件？下面我们通过一个demo来解答这个问题。</p>
+          <h1 id="v-slot插槽新增"><a href="#v-slot插槽新增" class="headerlink" title="v-slot插槽新增"></a>v-slot插槽新增</h1><blockquote>
+<p>在vue v2.6.0中，新引入了v-slot指令，他取代了slot和slot-scope这两个目前已经被废弃但是未被移除的特性。</p>
 </blockquote>
-<h1 id="父组件"><a href="#父组件" class="headerlink" title="父组件"></a>父组件</h1><pre><code class="html">&lt;template&gt;
-  &lt;div class=&quot;parent&quot;&gt;
-    我是父组件
-    &lt;!--父组件监听子组件触发的say方法，调用自己的parentSay方法--&gt;
-    &lt;!--通过:msg将父组件的数据传递给子组件--&gt;
-    &lt;children :msg=&quot;msg&quot; @say=&quot;parentSay&quot;&gt;&lt;/children&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<pre><code class="html">  // 根组件
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;mo&gt;
+            &lt;template v-slot:header=&quot;slotProps&quot;&gt;
+                &lt;h1&gt;{{slotProps.header + ' ' + msg}}&lt;/h1&gt;
 
-&lt;script&gt;
+            &lt;/template&gt;
 
-import Children from &#39;./children.vue&#39;
+            &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+            &lt;p&gt;And another one.&lt;/p&gt;
 
-export default {
-  data () {
-    return {
-      msg: &#39;hello, children&#39;
-    }
-  },
-
-  methods: {
-      // 参数就是子组件传递出来的数据
-      parentSay(msg){
-          console.log(msg) // hello, parent
-      }
-  },
-
-  // 引入子组件
-  components:{
-      children: Children
-  }
-}
-&lt;/script&gt;
-</code></pre>
-<h1 id="子组件"><a href="#子组件" class="headerlink" title="子组件"></a>子组件</h1><pre><code class="html">&lt;template&gt;
-  &lt;div class=&quot;hello&quot;&gt;
-    &lt;div class=&quot;children&quot; @click=&quot;say&quot;&gt;
-      我是子组件
-      &lt;div&gt;
-        父组件对我说：{{msg}}
-      &lt;/div&gt;
+            &lt;template v-slot:footer&gt;
+                &lt;p&gt;Here&#39;s some contact info&lt;/p&gt;
+            &lt;/template&gt;
+        &lt;/mo&gt;
     &lt;/div&gt;
-
-  &lt;/div&gt;
 &lt;/template&gt;
 
 &lt;script&gt;
-
-  export default {
-      //父组件通过props属性传递进来的数据
-      props: {
-          msg: {
-              type: String,
-              default: () =&gt; {
-                  return &#39;&#39;
-              }
-          }
-      },
-      data () {
-        return {
-            childrenSay: &#39;hello, parent&#39;
+    import mo from &#39;./module.vue&#39;
+    export default {
+        components: {
+            mo
+        },
+        data() {
+            return {
+                msg: &#39;这是根组件的消息&#39;
+            }
         }
-      },
-
-      methods: {
-          // 子组件通过emit方法触发父组件中定义好的函数，从而将子组件中的数据传递给父组件
-          say(){
-              this.$emit(&#39;say&#39; , this.childrenSay);
-          }
-      }
-  }
+    }
 &lt;/script&gt;
+
+// 子组件
+&lt;template&gt;
+    &lt;div&gt;
+        --header start--
+        &lt;header&gt;
+            &lt;slot name=&quot;header&quot; :header=&quot;header&quot;&gt;&lt;/slot&gt;
+        &lt;/header&gt;
+        --header over--
+        &lt;div&gt;&lt;/div&gt;
+        --default start--
+        &lt;slot&gt;&lt;/slot&gt;
+        --default over--
+        &lt;div&gt;&lt;/div&gt;
+        --footer start--
+        &lt;footer&gt;
+            &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+        &lt;/footer&gt;
+        --dooter over--
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        data() {
+            return {
+                header: &#39;来自子组件的头部消息&#39;
+            }
+        }
+    }
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+
 </code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
-<p>vue的父子组件间通信可以总结成一句话：<br>父组件通过 prop 给子组件下发数据，子组件通过$emit触发事件给父组件发送消息，即 prop 向下传递，事件向上传递。</p>
-</blockquote>
+<ul>
+<li>组件中可以使用template标签，加v-slot指令制定具名插槽，当没有指定插槽name时，默认出口会带有隐含的名字“default”。</li>
+<li>根组件可以利用v-slot:header=”slotProps”接受组件中的消息，组件中只需要在<slot name="header" :header="header"></slot>就可以了</li>
+<li>如果被提供的内容只有一个默认插槽时，组件的标签可以直接被当做插槽的模板来使用<mo v-slot="slotProps"></mo></li>
+<li>动态参数也可是使用到插槽当中<mo v-slot="[dynamicSlotName]"></mo></li>
+<li>v-slot的缩写是#，但是如果使用#的话，必须始终使用具插槽来代替<mo #default="slotProps">
+
+</mo></li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -525,36 +527,19 @@ export default {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2019/06/15/v-slot小结/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/6k/wallhaven-6kdkrx.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/6k/wallhaven-6kdkrx.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                v-slot使用小结</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2019/05/27/nextTick/" rel="next">
+            <a href="/2019/06/12/vue 父子组件间通信/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://w.wallhaven.cc/full/2k/wallhaven-2kg5rg.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/leekiwi/cdn@1.5/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565080888107&di=47a989b4d6708eaffe853d390cc4a1af&imgtype=0&src=http%3A%2F%2Fwx1.sinaimg.cn%2Fcrop.152.0.907.509.1000%2F006CcH6gly1fo0swoymtej30xr0e6q4g.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565080888107&di=47a989b4d6708eaffe853d390cc4a1af&imgtype=0&src=http%3A%2F%2Fwx1.sinaimg.cn%2Fcrop.152.0.907.509.1000%2F006CcH6gly1fo0swoymtej30xr0e6q4g.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                nextTick原理解析</h3>
+                vue 父子组件通信</h3>
                 <hr>
               </div>
             </a>
