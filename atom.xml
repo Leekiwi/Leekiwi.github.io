@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leekiwi.github.io/"/>
-  <updated>2019-08-06T08:18:19.514Z</updated>
+  <updated>2019-08-25T10:17:54.921Z</updated>
   <id>https://leekiwi.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS输出内容为[object Object]</title>
+    <link href="https://leekiwi.github.io/2019/06/30/js%20%5Bobject%20Object%5D/"/>
+    <id>https://leekiwi.github.io/2019/06/30/js [object Object]/</id>
+    <published>2019-06-30T14:10:01.000Z</published>
+    <updated>2019-08-25T10:17:54.921Z</updated>
+    
+    <summary type="html">
+    
+      js常见报错
+    
+    </summary>
+    
+      <category term="技术" scheme="https://leekiwi.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="https://leekiwi.github.io/tags/web/"/>
+    
+      <category term="JS" scheme="https://leekiwi.github.io/tags/JS/"/>
+    
+  </entry>
   
   <entry>
     <title>v-slot使用小结</title>
